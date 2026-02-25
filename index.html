@@ -14,6 +14,11 @@ body{
   font-family: Manrope, sans-serif;
   background: linear-gradient(180deg,#070707,#0b0b0b);
 }
+.container-fix{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 20px;
+}
 .glass{
   background: rgba(255,255,255,.05);
   backdrop-filter: blur(14px);
@@ -50,20 +55,21 @@ body{
 
 <!-- HEADER -->
 <header class="sticky top-0 backdrop-blur bg-black/40 border-b border-white/10 z-50">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+  <div class="container-fix py-3 flex justify-between items-center">
     <div class="font-black tracking-wide">LUXAR AUTORENT</div>
     <a href="#lead1" class="btn-ghost text-sm">Оставить заявку</a>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="max-w-6xl mx-auto px-4 pt-14 pb-14">
-  <div class="grid lg:grid-cols-2 gap-10 items-start">
+<section class="container-fix pt-14 pb-14">
+  <div class="grid lg:grid-cols-2 gap-12 items-start">
 
     <div>
       <h1 class="text-4xl font-black leading-tight tracking-tight">
         Премиальная аренда авто в Бишкеке
       </h1>
+
       <p class="mt-5 text-white/70 leading-relaxed">
         Оставьте номер — мы перезвоним быстро и предложим лучший вариант под вашу задачу.
       </p>
@@ -77,10 +83,19 @@ body{
 
     <!-- LEAD 1 -->
     <div id="lead1" class="glass p-6">
-      <div class="text-xl font-black">Получить быстрый обратный звонок</div>
-      <p class="text-white/60 text-sm mt-1">Перезвоним в течение 10–20 минут</p>
+      <div class="flex justify-between items-start">
+        <div>
+          <div class="text-xl font-black">Получить быстрый обратный звонок</div>
+          <div class="text-sm text-white/60 mt-1">
+            Перезвоним и уточним детали аренды
+          </div>
+        </div>
+        <div class="text-xs text-white/60 text-right">
+          Ответим<br><span class="font-semibold text-white">10–20 мин</span>
+        </div>
+      </div>
 
-      <form class="mt-6 space-y-4">
+      <div class="mt-6 space-y-4">
         <input type="text" placeholder="Ваше имя"
           class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3" />
 
@@ -88,21 +103,21 @@ body{
           class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3" />
 
         <button class="btn w-full">Заказать звонок</button>
-      </form>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- PHOTO BLOCK BEFORE ABOUT -->
-<section class="max-w-6xl mx-auto px-4 pb-14">
+<!-- PHOTO BLOCK -->
+<section class="container-fix pb-14">
   <div class="glass overflow-hidden">
     <img src="images/hero.jpg" class="w-full h-[220px] object-cover opacity-80">
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="max-w-6xl mx-auto px-4 pb-14">
+<section class="container-fix pb-14">
   <div class="glass p-6">
     <div class="text-xs text-white/60 font-semibold tracking-wide">О НАС</div>
     <h2 class="mt-2 text-2xl font-black">LUXAR AUTORENT</h2>
@@ -113,8 +128,8 @@ body{
   </div>
 </section>
 
-<!-- ADVANTAGES 01/02/03/04 -->
-<section class="max-w-6xl mx-auto px-4 pb-16">
+<!-- ADVANTAGES -->
+<section class="container-fix pb-16">
   <div class="metric-grid">
 
     <div>
@@ -153,11 +168,23 @@ body{
 </section>
 
 <!-- LEAD 2 -->
-<section class="max-w-6xl mx-auto px-4 pb-20">
+<section class="container-fix pb-20">
   <div class="glass p-6">
-    <div class="text-2xl font-black">Подобрать автомобиль</div>
 
-    <form class="mt-6 space-y-4">
+    <div class="flex justify-between items-start">
+      <div>
+        <div class="text-xs text-white/60 font-semibold tracking-wide">ЗАЯВКА</div>
+        <div class="mt-2 text-2xl font-black">Подобрать автомобиль</div>
+        <div class="mt-2 text-sm text-white/60">
+          Выберите машину — мы перезвоним и подтвердим наличие.
+        </div>
+      </div>
+      <div class="text-xs text-white/60 text-right">
+        Ответим<br><span class="font-semibold text-white">10–20 мин</span>
+      </div>
+    </div>
+
+    <div class="mt-6 space-y-4">
 
       <select class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3">
         <option>BMW M5 — 350$</option>
@@ -182,7 +209,8 @@ body{
         class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3" />
 
       <button class="btn w-full">Отправить заявку</button>
-    </form>
+    </div>
+
   </div>
 </section>
 
