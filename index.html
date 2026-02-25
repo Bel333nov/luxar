@@ -490,6 +490,8 @@
 </div>
 
 <script>
+  // ✅ ВАЖНО:
+  // Оставляем ваш URL /exec
   const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwIx39EIU3SZP7Z7O9XEjBV135lphkEJYyEYks_WUGP2h_DIRM0h07ABBJMQezqyNsB/exec";
 
   function attachPhoneMask(input){
@@ -509,23 +511,32 @@
   attachPhoneMask(document.getElementById('phone2'));
   attachPhoneMask(document.getElementById('modalPhone'));
 
-  // ✅ FIX: no-cors + text/plain (чтобы не было "висит" или "ошибка" из-за CORS)
+  // ✅ FIX: УБИРАЕМ no-cors и text/plain
+  // Делаем нормальный JSON POST и читаем ответ {success:true/false}
   async function sendLead(payload){
     payload.page_url = location.href;
     payload.created_at = new Date().toISOString();
-    if (!SUBMIT_ENDPOINT) return true;
 
-    try{
-      await fetch(SUBMIT_ENDPOINT, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      });
-      return true;
-    }catch(err){
-      return false;
+    // гарантируем поля (чтобы Apps Script точно записал в нужные колонки)
+    payload.source = payload.source || "Сайт";
+    payload.car = payload.car || "";
+    payload.name = payload.name || "";
+    payload.phone = payload.phone || "";
+
+    if (!SUBMIT_ENDPOINT) return { success: true };
+
+    const res = await fetch(SUBMIT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok || !data.success) {
+      throw new Error(data.error || ("HTTP " + res.status));
     }
+    return data;
   }
 
   // Form 1
@@ -534,13 +545,19 @@
     const status = document.getElementById('status1');
     const phone = document.getElementById('phone1').value;
     if (!isPhoneValid(phone)) { status.textContent = "Проверьте номер телефона"; return; }
+
     status.textContent = "Отправляем…";
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Лидформа 1";
-    const ok = await sendLead(payload);
-    status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
-    if (ok) e.target.reset();
+
+    try{
+      await sendLead(payload);
+      status.textContent = "Заявка отправлена ✓";
+      e.target.reset();
+    }catch(err){
+      status.textContent = "Ошибка отправки: " + (err.message || "попробуйте ещё раз");
+    }
   });
 
   // Form 2
@@ -549,13 +566,19 @@
     const status = document.getElementById('status2');
     const phone = document.getElementById('phone2').value;
     if (!isPhoneValid(phone)) { status.textContent = "Проверьте номер телефона"; return; }
+
     status.textContent = "Отправляем…";
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Лидформа 2";
-    const ok = await sendLead(payload);
-    status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
-    if (ok) e.target.reset();
+
+    try{
+      await sendLead(payload);
+      status.textContent = "Заявка отправлена ✓";
+      e.target.reset();
+    }catch(err){
+      status.textContent = "Ошибка отправки: " + (err.message || "попробуйте ещё раз");
+    }
   });
 
   // Modal open/close
@@ -591,15 +614,19 @@
     e.preventDefault();
     const phone = document.getElementById('modalPhone').value;
     if (!isPhoneValid(phone)) { modalStatus.textContent = "Проверьте номер телефона"; return; }
+
     modalStatus.textContent = "Отправляем…";
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Автопарк";
-    const ok = await sendLead(payload);
-    modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
-    if (ok) {
+
+    try{
+      await sendLead(payload);
+      modalStatus.textContent = "Заявка отправлена ✓";
       e.target.reset();
       setTimeout(closeModal, 400);
+    }catch(err){
+      modalStatus.textContent = "Ошибка отправки: " + (err.message || "попробуйте ещё раз");
     }
   });
 
@@ -623,4 +650,4 @@
 </script>
 
 </body>
-</html> 
+</html>
