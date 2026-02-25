@@ -150,7 +150,7 @@
     <p class="mt-4 text-white/70 leading-relaxed max-w-2xl">
       В автопарке 13 премиальных автомобилей — под любой формат:
       от деловых встреч до комфортного отдыха.
-      Мы делаем сервис, к которому хочется возвращаться.
+      У нас премиальные авто по одним из лучших цен в городе.
       <span class="text-white font-semibold">Ваш комфорт – наш стандарт.</span>
     </p>
   </div>
@@ -196,13 +196,23 @@
     </div>
 
     <form id="leadForm2" class="mt-6 space-y-4" autocomplete="off">
+      <!-- ✅ весь список машин с ценами -->
       <select name="car" required
         class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30">
         <option value="" selected disabled>Выберите автомобиль</option>
         <option>BMW M5 — 350$</option>
         <option>Land Cruiser 200 — 300$</option>
+        <option>Mercedes Benz W223 — 300$</option>
         <option>BMW X7 — 250$</option>
         <option>BMW X5 G05 — 220$</option>
+        <option>Lexus GX — 220$</option>
+        <option>Camry 80 — 180$</option>
+        <option>BMW 7 series — 180$</option>
+        <option>BMW G30 — 160$</option>
+        <option>Mercedes E300 — 160$</option>
+        <option>Lexus ES — 160$</option>
+        <option>Changan Uni-Z — 100$</option>
+        <option>Camry 70 — 100$</option>
       </select>
 
       <input name="name" type="text" placeholder="Ваше имя" required
@@ -319,7 +329,7 @@
       </article>
 
       <article class="snap-item min-w-[82%] sm:min-w-0 glass p-5">
-        <div class="text-sm font-extrabold">Алексей</div>
+        <div class="text-sm font-extrabold">Тимур</div>
         <div class="mt-2 text-sm text-white/70 leading-relaxed">
           “Аккуратный подход. Всё прозрачно, без сюрпризов. Рекомендую.”
         </div>
@@ -327,7 +337,7 @@
       </article>
 
       <article class="snap-item min-w-[82%] sm:min-w-0 glass p-5">
-        <div class="text-sm font-extrabold">Дмитрий</div>
+        <div class="text-sm font-extrabold">Эмир</div>
         <div class="mt-2 text-sm text-white/70 leading-relaxed">
           “Брал X5. Машина в идеале, реагируют быстро. Спасибо!”
         </div>
@@ -423,8 +433,7 @@
 </div>
 
 <script>
-  // ====== куда потом подключим отправку (Google Sheets / Apps Script) ======
-  const SUBMIT_ENDPOINT = ""; // пример: "https://script.google.com/macros/s/XXXXX/exec"
+  const SUBMIT_ENDPOINT = "";
 
   function attachPhoneMask(input){
     input.addEventListener('input', () => {
@@ -446,8 +455,8 @@
   async function sendLead(payload){
     payload.page_url = location.href;
     payload.created_at = new Date().toISOString();
-
     if (!SUBMIT_ENDPOINT) return true;
+
     const res = await fetch(SUBMIT_ENDPOINT, {
       method: "POST",
       headers: {"Content-Type":"application/json"},
@@ -505,11 +514,11 @@
     modalBackdrop.classList.remove('open');
     modalBackdrop.setAttribute('aria-hidden','true');
   }
+
   modalClose.addEventListener('click', closeModal);
   modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-  // Bind buttons
   document.querySelectorAll('.js-open-modal').forEach(btn => {
     btn.addEventListener('click', () => openModal(btn.dataset.car || "Автопарк"));
   });
