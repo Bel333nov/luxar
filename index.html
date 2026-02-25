@@ -6,48 +6,66 @@
 <title>LUXAR AUTORENT — Премиум аренда авто Бишкек</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-body{
-  font-family: Manrope, sans-serif;
-  background: linear-gradient(180deg,#070707,#0b0b0b);
-}
-.container-fix{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 20px;
-}
-.glass{
-  background: rgba(255,255,255,.05);
-  backdrop-filter: blur(14px);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:24px;
-}
-.btn{
-  background:#fff;
-  color:#000;
-  font-weight:900;
-  border-radius:999px;
-  padding:14px;
-}
-.btn-ghost{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:999px;
-  padding:8px 14px;
-}
-.metric-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:32px;
-}
-@media(min-width:1024px){
-  .metric-grid{
-    grid-template-columns:repeat(4,1fr);
+  body{
+    font-family: Manrope, sans-serif;
+    background: linear-gradient(180deg,#070707,#0b0b0b);
   }
-}
+  .container-fix{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .glass{
+    background: rgba(255,255,255,.05);
+    backdrop-filter: blur(14px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:24px;
+  }
+  .btn{
+    background:#fff;
+    color:#000;
+    font-weight:900;
+    border-radius:999px;
+    padding:14px;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .btn-ghost{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:999px;
+    padding:8px 14px;
+  }
+  .metric-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:32px;
+  }
+  @media(min-width:1024px){
+    .metric-grid{ grid-template-columns:repeat(4,1fr); }
+  }
+
+  /* Cards (fleet) */
+  .fleet-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr); /* mobile: 2 columns */
+    gap:12px;
+  }
+  @media(min-width:768px){
+    .fleet-grid{ grid-template-columns:repeat(3,1fr); gap:14px; }
+  }
+  .car-card{
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.03);
+    overflow:hidden;
+  }
+  .car-thumb{
+    height:120px;
+    background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  }
 </style>
 </head>
 
@@ -67,12 +85,8 @@ body{
 
     <div>
       <h1 class="text-4xl font-black leading-tight tracking-tight">
-        Премиальная аренда авто в Бишкеке
+        Аренда авто премиум-класса
       </h1>
-
-      <p class="mt-5 text-white/70 leading-relaxed">
-        Оставьте номер — мы перезвоним быстро и предложим лучший вариант под вашу задачу.
-      </p>
 
       <div class="flex flex-wrap gap-2 mt-6">
         <span class="btn-ghost text-xs">Премиальные авто</span>
@@ -95,24 +109,24 @@ body{
         </div>
       </div>
 
-      <div class="mt-6 space-y-4">
+      <form class="mt-6 space-y-4">
         <input type="text" placeholder="Ваше имя"
-          class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3" />
+          class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
 
         <input type="tel" placeholder="+996 ___ ___ ___"
-          class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3" />
+          class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
 
         <button class="btn w-full">Заказать звонок</button>
-      </div>
+      </form>
     </div>
 
   </div>
 </section>
 
-<!-- PHOTO BLOCK -->
+<!-- PHOTO BLOCK 1 -->
 <section class="container-fix pb-14">
   <div class="glass overflow-hidden">
-    <img src="images/hero.jpg" class="w-full h-[220px] object-cover opacity-80">
+    <img src="images/hero.jpg" class="w-full h-[220px] object-cover opacity-80" alt="">
   </div>
 </section>
 
@@ -124,6 +138,8 @@ body{
     <p class="mt-4 text-white/70 leading-relaxed">
       В автопарке 13 премиальных автомобилей — под любой формат:
       от деловых встреч до комфортного отдыха.
+      Мы делаем сервис, к которому хочется возвращаться.
+      <span class="text-white font-semibold">Ваш комфорт – наш стандарт.</span>
     </p>
   </div>
 </section>
@@ -131,46 +147,35 @@ body{
 <!-- ADVANTAGES -->
 <section class="container-fix pb-16">
   <div class="metric-grid">
-
     <div>
       <div class="text-2xl font-black text-white/90">01</div>
       <div class="mt-2 font-semibold">13 премиальных авто</div>
-      <div class="text-white/50 text-sm mt-1">
-        Автопарк под любые задачи
-      </div>
+      <div class="text-white/50 text-sm mt-1">Автопарк под любые задачи</div>
     </div>
 
     <div>
       <div class="text-2xl font-black text-white/90">02</div>
       <div class="mt-2 font-semibold">300+ клиентов</div>
-      <div class="text-white/50 text-sm mt-1">
-        Высокий уровень доверия
-      </div>
+      <div class="text-white/50 text-sm mt-1">Высокий уровень доверия</div>
     </div>
 
     <div>
       <div class="text-2xl font-black text-white/90">03</div>
       <div class="mt-2 font-semibold">КАСКО + ОСАГО</div>
-      <div class="text-white/50 text-sm mt-1">
-        Полная страховая защита
-      </div>
+      <div class="text-white/50 text-sm mt-1">Полная страховая защита</div>
     </div>
 
     <div>
       <div class="text-2xl font-black text-white/90">04</div>
       <div class="mt-2 font-semibold">Тонировка</div>
-      <div class="text-white/50 text-sm mt-1">
-        С официальным разрешением
-      </div>
+      <div class="text-white/50 text-sm mt-1">С официальным разрешением</div>
     </div>
-
   </div>
 </section>
 
 <!-- LEAD 2 -->
-<section class="container-fix pb-20">
-  <div class="glass p-6">
-
+<section class="container-fix pb-14">
+  <div id="lead2" class="glass p-6">
     <div class="flex justify-between items-start">
       <div>
         <div class="text-xs text-white/60 font-semibold tracking-wide">ЗАЯВКА</div>
@@ -184,33 +189,147 @@ body{
       </div>
     </div>
 
-    <div class="mt-6 space-y-4">
-
-      <select class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3">
+    <form class="mt-6 space-y-4">
+      <select class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30">
+        <option selected disabled>Выберите автомобиль</option>
         <option>BMW M5 — 350$</option>
         <option>Land Cruiser 200 — 300$</option>
-        <option>Mercedes W223 — 300$</option>
         <option>BMW X7 — 250$</option>
         <option>BMW X5 G05 — 220$</option>
-        <option>Lexus GX — 220$</option>
-        <option>Camry 80 — 180$</option>
         <option>BMW 7 series — 180$</option>
-        <option>BMW G30 — 160$</option>
-        <option>Mercedes E300 — 160$</option>
-        <option>Lexus ES — 160$</option>
-        <option>Changan Uni-Z — 100$</option>
-        <option>Camry 70 — 100$</option>
+        <option>Camry 80 — 180$</option>
       </select>
 
       <input type="text" placeholder="Ваше имя"
-        class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3" />
+        class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
 
       <input type="tel" placeholder="+996 ___ ___ ___"
-        class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3" />
+        class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
 
       <button class="btn w-full">Отправить заявку</button>
+    </form>
+  </div>
+</section>
+
+<!-- PHOTO BLOCK 2 (after lead2) -->
+<section class="container-fix pb-16">
+  <div class="glass overflow-hidden">
+    <img src="images/after.jpg" class="w-full h-[220px] object-cover opacity-80" alt=""
+         onerror="this.src='images/hero.jpg';">
+  </div>
+</section>
+
+<!-- FLEET (6 cards) -->
+<section id="fleet" class="container-fix pb-20">
+  <div class="glass p-6">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <div class="text-xs text-white/60 font-semibold tracking-wide">АВТОПАРК</div>
+        <h3 class="mt-2 text-2xl font-black">Популярные модели</h3>
+        <p class="mt-2 text-sm text-white/60">6 вариантов — чтобы быстро выбрать и забронировать.</p>
+      </div>
+      <a href="#lead2" class="hidden sm:inline btn-ghost text-sm">Забронировать</a>
     </div>
 
+    <div class="mt-6 fleet-grid">
+
+      <!-- 1 -->
+      <article class="car-card">
+        <div class="car-thumb"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="font-extrabold">BMW M5</div>
+            <div class="text-white/80 font-semibold">350$</div>
+          </div>
+          <div class="mt-2 text-[12px] text-white/55 leading-relaxed">
+            Максимальная динамика и статус. Идеально для особых случаев.
+          </div>
+          <a href="#lead2" class="mt-3 inline-block btn-ghost text-xs">Забронировать</a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="car-card">
+        <div class="car-thumb"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="font-extrabold">Land Cruiser 200</div>
+            <div class="text-white/80 font-semibold">300$</div>
+          </div>
+          <div class="mt-2 text-[12px] text-white/55 leading-relaxed">
+            Премиум SUV для любых дорог. Комфорт + безопасность.
+          </div>
+          <a href="#lead2" class="mt-3 inline-block btn-ghost text-xs">Забронировать</a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="car-card">
+        <div class="car-thumb"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="font-extrabold">BMW X7</div>
+            <div class="text-white/80 font-semibold">250$</div>
+          </div>
+          <div class="mt-2 text-[12px] text-white/55 leading-relaxed">
+            Простор, премиум-уровень и комфорт для города и поездок.
+          </div>
+          <a href="#lead2" class="mt-3 inline-block btn-ghost text-xs">Забронировать</a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="car-card">
+        <div class="car-thumb"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="font-extrabold">BMW X5 G05</div>
+            <div class="text-white/80 font-semibold">220$</div>
+          </div>
+          <div class="mt-2 text-[12px] text-white/55 leading-relaxed">
+            Универсальный премиум SUV для встреч, дел и отдыха.
+          </div>
+          <a href="#lead2" class="mt-3 inline-block btn-ghost text-xs">Забронировать</a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="car-card">
+        <div class="car-thumb"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="font-extrabold">BMW 7 series</div>
+            <div class="text-white/80 font-semibold">180$</div>
+          </div>
+          <div class="mt-2 text-[12px] text-white/55 leading-relaxed">
+            Представительский седан для деловых встреч и статуса.
+          </div>
+          <a href="#lead2" class="mt-3 inline-block btn-ghost text-xs">Забронировать</a>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="car-card">
+        <div class="car-thumb"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="font-extrabold">Camry 80</div>
+            <div class="text-white/80 font-semibold">180$</div>
+          </div>
+          <div class="mt-2 text-[12px] text-white/55 leading-relaxed">
+            Комфортный седан для города, поездок и ежедневных задач.
+          </div>
+          <a href="#lead2" class="mt-3 inline-block btn-ghost text-xs">Забронировать</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mt-8">
+      <a href="#lead2" class="btn w-full sm:w-auto sm:px-8 inline-block text-center">
+        Увидеть весь автопарк
+      </a>
+    </div>
   </div>
 </section>
 
