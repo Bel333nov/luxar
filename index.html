@@ -490,7 +490,7 @@
 </div>
 
 <script>
-  const SUBMIT_ENDPOINT = "";
+  const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwIx39EIU3SZP7Z7O9XEjBV135lphkEJYyEYks_WUGP2h_DIRM0h07ABBJMQezqyNsB/exec";
 
   function attachPhoneMask(input){
     input.addEventListener('input', () => {
@@ -522,6 +522,7 @@
     return res.ok;
   }
 
+  // Form 1
   document.getElementById('leadForm1').addEventListener('submit', async (e) => {
     e.preventDefault();
     const status = document.getElementById('status1');
@@ -530,12 +531,13 @@
     status.textContent = "Отправляем…";
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());
-    payload.source = "lead_form_1";
+    payload.source = "Лидформа 1";
     const ok = await sendLead(payload);
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) e.target.reset();
   });
 
+  // Form 2
   document.getElementById('leadForm2').addEventListener('submit', async (e) => {
     e.preventDefault();
     const status = document.getElementById('status2');
@@ -544,12 +546,13 @@
     status.textContent = "Отправляем…";
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());
-    payload.source = "lead_form_2";
+    payload.source = "Лидформа 2";
     const ok = await sendLead(payload);
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) e.target.reset();
   });
 
+  // Modal open/close
   const modalBackdrop = document.getElementById('modalBackdrop');
   const modalClose = document.getElementById('modalClose');
   const modalCar = document.getElementById('modalCar');
@@ -577,6 +580,7 @@
     btn.addEventListener('click', () => openModal(btn.dataset.car || "Автопарк"));
   });
 
+  // Modal submit
   document.getElementById('modalForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const phone = document.getElementById('modalPhone').value;
@@ -584,7 +588,7 @@
     modalStatus.textContent = "Отправляем…";
     const fd = new FormData(e.target);
     const payload = Object.fromEntries(fd.entries());
-    payload.source = "modal_short_form";
+    payload.source = "Автопарк";
     const ok = await sendLead(payload);
     modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) {
@@ -593,6 +597,7 @@
     }
   });
 
+  // Reveal
   (function(){
     const els = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window) || els.length === 0){
