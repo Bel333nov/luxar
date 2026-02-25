@@ -3,13 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Премиум авто в аренду — Бишкек</title>
-  <meta name="description" content="Премиальные автомобили в аренду в Бишкеке. Оставьте номер — перезвоним быстро." />
+  <title>LUXAR AUTORENT — Премиум аренда авто Бишкек</title>
+  <meta name="description" content="LUXAR AUTORENT — 13 премиальных авто в Бишкеке. Оставьте номер — перезвоним быстро." />
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,7 +23,6 @@
     html, body { height: 100%; }
     body { font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
-    /* Premium background vibe */
     .bg-premium{
       background:
         radial-gradient(900px 500px at 70% 20%, rgba(255,255,255,.08), transparent 60%),
@@ -33,7 +30,6 @@
         linear-gradient(180deg, #070707 0%, #0a0a0a 55%, #070707 100%);
     }
 
-    /* Subtle noise */
     .noise:before{
       content:"";
       position:absolute; inset:0;
@@ -51,40 +47,13 @@
       box-shadow: 0 10px 40px rgba(0,0,0,.35);
       border-radius: var(--r-2xl);
     }
+    .hairline{ border-top: 1px solid rgba(255,255,255,.08); }
 
-    .hairline{
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-
-    /* nicer inputs on iOS */
-    input{
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    /* Big background typography like your ref */
-    .bg-type{
-      position:absolute; inset: -40px -20px auto -20px;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      line-height: .9;
-      opacity:.10;
-      filter: blur(.2px);
-      user-select:none;
-      pointer-events:none;
-      white-space:nowrap;
-    }
-    .bg-type span{
-      display:block;
-      font-size: clamp(56px, 9vw, 120px);
-    }
-
-    /* Button */
     .btn{
       border-radius: 999px;
       background: #fff;
       color: #0a0a0a;
-      font-weight: 800;
+      font-weight: 900;
       padding: 14px 18px;
     }
     .btn:active{ transform: translateY(1px); }
@@ -94,12 +63,11 @@
       background: rgba(255,255,255,.08);
       border: 1px solid rgba(255,255,255,.10);
       padding: 10px 14px;
-      font-weight: 700;
+      font-weight: 800;
       color: rgba(255,255,255,.92);
     }
 
-    /* Small chips */
-    .chip{
+    .pill{
       display:inline-flex;
       align-items:center;
       gap:10px;
@@ -108,6 +76,48 @@
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.10);
       backdrop-filter: blur(10px);
+    }
+
+    /* Big background type */
+    .bg-type{
+      position:absolute; inset: -50px -20px auto -20px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: .9;
+      opacity:.10;
+      user-select:none;
+      pointer-events:none;
+      white-space:nowrap;
+    }
+    .bg-type span{ display:block; font-size: clamp(52px, 9vw, 118px); }
+
+    /* Bottom sheet */
+    .sheet-backdrop{
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display:none;
+      z-index: 100;
+    }
+    .sheet{
+      position: absolute; left: 0; right: 0; bottom: 0;
+      background: rgba(18,18,18,.92);
+      border-top: 1px solid rgba(255,255,255,.12);
+      border-left: 1px solid rgba(255,255,255,.06);
+      border-right: 1px solid rgba(255,255,255,.06);
+      border-radius: 20px 20px 0 0;
+      transform: translateY(110%);
+      transition: transform .22s ease;
+      max-height: 78vh;
+      overflow: hidden;
+    }
+    .sheet-backdrop.open{ display:block; }
+    .sheet-backdrop.open .sheet{ transform: translateY(0); }
+    .handle{
+      width: 44px; height: 5px; border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      margin: 10px auto 6px;
     }
   </style>
 </head>
@@ -118,56 +128,55 @@
     <div class="bg-black/35 backdrop-blur border-b border-white/10">
       <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
-          <div class="font-extrabold tracking-wide">PREMIUM RENT</div>
+          <div class="w-2 h-2 rounded-full bg-white/70"></div>
+          <div class="font-black tracking-wide">LUXAR AUTORENT</div>
         </div>
 
-        <a href="#form" class="btn-ghost text-sm">Оставить заявку</a>
+        <a href="#lead-1" class="btn-ghost text-sm">Оставить заявку</a>
       </div>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="relative overflow-hidden noise">
-    <!-- Big background type -->
     <div class="bg-type">
-      <span>Premium</span>
-      <span>Rent</span>
+      <span>LUXAR</span>
+      <span>AUTORENT</span>
     </div>
 
-    <!-- Background image (optional) -->
+    <!-- Background image (место под красивое фото) -->
     <div class="absolute inset-0 -z-10">
-      <!-- Если нет картинки — можешь удалить этот img -->
-      <img src="images/hero.jpg" alt="" class="w-full h-full object-cover opacity-20" />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black"></div>
+      <!-- Положи файл: images/hero.jpg -->
+      <img src="images/hero.jpg" alt="" class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/70 to-black"></div>
     </div>
 
     <div class="max-w-6xl mx-auto px-4 pt-10 pb-10">
       <div class="grid lg:grid-cols-2 gap-6 items-start">
         <!-- LEFT -->
         <div class="pt-2">
-          <div class="chip text-xs text-white/85">
+          <div class="pill text-xs text-white/85">
             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            Бишкек • Премиум класс • Только аренда
+            Высокий сервис
           </div>
 
-          <h1 class="mt-5 text-[34px] sm:text-[42px] leading-[1.05] font-black tracking-[-0.04em]">
-            Премиальные авто<br class="hidden sm:block" /> в аренду в Бишкеке
+          <h1 class="mt-5 text-[34px] sm:text-[44px] leading-[1.05] font-black tracking-[-0.04em]">
+            Премиальная аренда авто<br class="hidden sm:block" /> в Бишкеке
           </h1>
 
           <p class="mt-4 text-white/75 text-base leading-relaxed max-w-xl">
-            Оставьте номер — мы перезвоним быстро и подберём вариант под вашу задачу.
+            Оставьте номер — перезвоним быстро и предложим лучший вариант под вашу задачу.
           </p>
 
           <div class="mt-6 flex flex-wrap gap-2">
-            <span class="btn-ghost text-xs">Быстрая выдача</span>
-            <span class="btn-ghost text-xs">Договор</span>
-            <span class="btn-ghost text-xs">Поддержка 24/7</span>
+            <span class="btn-ghost text-xs">Деловые встречи</span>
+            <span class="btn-ghost text-xs">Свадьбы / события</span>
+            <span class="btn-ghost text-xs">Отдых / поездки</span>
           </div>
         </div>
 
-        <!-- FORM CARD -->
-        <div id="form" class="glass p-5 sm:p-6">
+        <!-- FORM 1 -->
+        <div id="lead-1" class="glass p-5 sm:p-6">
           <div class="flex items-start justify-between gap-4">
             <div>
               <div class="text-xl font-extrabold tracking-[-0.02em]">
@@ -185,18 +194,17 @@
 
           <div class="hairline mt-5"></div>
 
-          <form id="leadForm" class="mt-5 space-y-3" autocomplete="off">
-            <!-- Mobile-first: в одну колонку -->
+          <form id="leadForm1" class="mt-5 space-y-3" autocomplete="off">
             <div>
               <label class="text-xs text-white/70">Имя</label>
               <input name="name" required
                 class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 outline-none focus:border-white/30"
-                placeholder="Бек" />
+                placeholder="Ваше имя" />
             </div>
 
             <div>
               <label class="text-xs text-white/70">Телефон</label>
-              <input id="phone" name="phone" required inputmode="tel"
+              <input id="phone1" name="phone" required inputmode="tel"
                 class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 outline-none focus:border-white/30"
                 placeholder="+996 ___ ___ ___" />
               <div class="mt-2 text-[11px] text-white/55">
@@ -205,88 +213,197 @@
             </div>
 
             <div class="flex items-center justify-between gap-3">
-              <span id="status" class="text-[12px] text-white/70"></span>
+              <span id="status1" class="text-[12px] text-white/70"></span>
               <span class="text-[12px] text-white/55">Бишкек</span>
             </div>
 
-            <button id="submitBtn" type="submit" class="w-full btn py-3.5">
+            <button id="submitBtn1" type="submit" class="w-full btn py-3.5">
               Заказать звонок
             </button>
-
-            <div class="text-[12px] text-white/55">
-              Мы не используем автоответы — только живой звонок.
-            </div>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRUST / BENEFITS (минимально, чтобы не перегружать) -->
-  <section class="max-w-6xl mx-auto px-4 pb-14">
+  <!-- ABOUT -->
+  <section class="max-w-6xl mx-auto px-4 pt-6 pb-8">
+    <div class="glass p-6 sm:p-7">
+      <div class="text-xs text-white/60 font-semibold tracking-wide">О НАС</div>
+      <h2 class="mt-2 text-2xl sm:text-3xl font-black tracking-[-0.03em]">
+        LUXAR AUTORENT
+      </h2>
+      <p class="mt-3 text-white/70 leading-relaxed max-w-3xl">
+        В автопарке <span class="text-white font-semibold">13 премиальных автомобилей</span> — под любой формат:
+        от деловых встреч до комфортного отдыха. Мы делаем сервис, к которому хочется возвращаться.
+      </p>
+    </div>
+  </section>
+
+  <!-- METRICS (4 blocks) -->
+  <section class="max-w-6xl mx-auto px-4 pb-10">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
       <div class="glass p-4">
-        <div class="text-sm text-white/70">Сервис</div>
-        <div class="mt-1 font-bold">Подача и сопровождение</div>
+        <div class="text-sm text-white/60">Автопарк</div>
+        <div class="mt-1 text-2xl font-black">13</div>
+        <div class="text-sm text-white/70">премиальных машин</div>
       </div>
+
       <div class="glass p-4">
-        <div class="text-sm text-white/70">Прозрачность</div>
-        <div class="mt-1 font-bold">Договор без сюрпризов</div>
+        <div class="text-sm text-white/60">Доверие</div>
+        <div class="mt-1 text-2xl font-black">300+</div>
+        <div class="text-sm text-white/70">довольных клиентов</div>
       </div>
+
       <div class="glass p-4">
-        <div class="text-sm text-white/70">Скорость</div>
-        <div class="mt-1 font-bold">Оформление быстро</div>
+        <div class="text-sm text-white/60">Защита</div>
+        <div class="mt-1 text-2xl font-black">КАСКО</div>
+        <div class="text-sm text-white/70">+ ОСАГО</div>
       </div>
+
       <div class="glass p-4">
-        <div class="text-sm text-white/70">Поддержка</div>
-        <div class="mt-1 font-bold">24/7 на связи</div>
+        <div class="text-sm text-white/60">Комфорт</div>
+        <div class="mt-1 text-2xl font-black">Тонировка</div>
+        <div class="text-sm text-white/70">с разрешением</div>
       </div>
+    </div>
+  </section>
+
+  <!-- OPTIONAL: Price image (если хочешь показать прайс как на скрине) -->
+  <section class="max-w-6xl mx-auto px-4 pb-10">
+    <div class="glass overflow-hidden">
+      <div class="p-5 sm:p-6 flex items-center justify-between gap-3">
+        <div>
+          <div class="text-xs text-white/60 font-semibold tracking-wide">АКТУАЛЬНЫЙ ПРАЙС</div>
+          <div class="mt-1 font-bold">Можно оставить как фото-скрин</div>
+        </div>
+        <a href="#lead-2" class="btn-ghost text-sm">Выбрать авто</a>
+      </div>
+      <div class="hairline"></div>
+      <!-- Положи файл: images/price.jpg (если есть). Если нет — можешь удалить этот блок полностью -->
+      <img src="images/price.jpg" alt="Прайс" class="w-full max-h-[520px] object-cover opacity-90" />
+    </div>
+  </section>
+
+  <!-- FORM 2 with car picker -->
+  <section class="max-w-6xl mx-auto px-4 pb-14">
+    <div id="lead-2" class="glass p-5 sm:p-7">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <div class="text-xs text-white/60 font-semibold tracking-wide">ЗАЯВКА</div>
+          <div class="mt-2 text-2xl font-black tracking-[-0.03em]">
+            Подобрать автомобиль
+          </div>
+          <div class="mt-2 text-sm text-white/70">
+            Выберите машину — мы перезвоним и подтвердим наличие.
+          </div>
+        </div>
+        <div class="text-[11px] text-white/65 text-right">
+          Ответим<br><span class="font-semibold text-white">10–20 мин</span>
+        </div>
+      </div>
+
+      <div class="hairline mt-5"></div>
+
+      <form id="leadForm2" class="mt-5 grid gap-3" autocomplete="off">
+        <div>
+          <label class="text-xs text-white/70">Имя</label>
+          <input name="name" required
+            class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 outline-none focus:border-white/30"
+            placeholder="Ваше имя" />
+        </div>
+
+        <div>
+          <label class="text-xs text-white/70">Телефон</label>
+          <input id="phone2" name="phone" required inputmode="tel"
+            class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 outline-none focus:border-white/30"
+            placeholder="+996 ___ ___ ___" />
+        </div>
+
+        <!-- Car picker field -->
+        <div>
+          <label class="text-xs text-white/70">Автомобиль</label>
+
+          <!-- this is a "fake select" that opens bottom sheet -->
+          <button type="button" id="openCarSheet"
+            class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 text-left outline-none focus:border-white/30">
+            <span id="carLabel" class="text-white/75">Выберите автомобиль</span>
+            <span class="float-right text-white/40">▴</span>
+          </button>
+
+          <!-- hidden input for form submit -->
+          <input type="hidden" name="car" id="carValue" required />
+          <div class="mt-2 text-[11px] text-white/55">
+            Список открывается снизу вверх.
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between gap-3">
+          <span id="status2" class="text-[12px] text-white/70"></span>
+          <span class="text-[12px] text-white/55">Бишкек</span>
+        </div>
+
+        <button id="submitBtn2" type="submit" class="w-full btn py-3.5">
+          Отправить заявку
+        </button>
+      </form>
     </div>
   </section>
 
   <footer class="border-t border-white/10">
     <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-white/55">
-      © <span id="year"></span> Premium Rent • Бишкек
+      © <span id="year"></span> LUXAR AUTORENT • Бишкек
     </div>
   </footer>
+
+  <!-- Bottom Sheet (car list) -->
+  <div id="sheetBackdrop" class="sheet-backdrop" aria-hidden="true">
+    <div class="sheet">
+      <div class="handle"></div>
+      <div class="px-4 pb-3 pt-2 flex items-center justify-between">
+        <div class="font-extrabold">Выберите автомобиль</div>
+        <button id="closeCarSheet" class="btn-ghost text-xs">Закрыть</button>
+      </div>
+
+      <div class="px-4 pb-3">
+        <input id="carSearch" type="text" placeholder="Поиск (например: Camry, BMW, W223)"
+          class="w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3 outline-none focus:border-white/30" />
+      </div>
+
+      <div id="carList" class="overflow-auto px-2 pb-4" style="max-height: 58vh;"></div>
+    </div>
+  </div>
 
   <script>
     // Позже сюда вставим URL Google Apps Script, чтобы заявки падали в таблицу
     const SUBMIT_ENDPOINT = ""; // пример: "https://script.google.com/macros/s/XXXXX/exec"
 
-    const form = document.getElementById('leadForm');
-    const phone = document.getElementById('phone');
-    const btn = document.getElementById('submitBtn');
-    const statusEl = document.getElementById('status');
-
-    // Простая маска номера
-    phone.addEventListener('input', () => {
-      let v = phone.value.replace(/[^\d+]/g, '');
-      if (!v.startsWith('+')) v = '+996' + v.replace(/^996/, '');
-      v = '+' + v.replace(/\+/g,'');
-      phone.value = v;
-    });
-
+    // ===== Phones mask =====
+    function attachPhoneMask(input){
+      input.addEventListener('input', () => {
+        let v = input.value.replace(/[^\d+]/g, '');
+        if (!v.startsWith('+')) v = '+996' + v.replace(/^996/, '');
+        v = '+' + v.replace(/\+/g,'');
+        input.value = v;
+      });
+    }
     function isPhoneValid(value){
       const digits = value.replace(/\D/g,'');
       return digits.length >= 12; // 996 + 9 цифр
     }
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    attachPhoneMask(document.getElementById('phone1'));
+    attachPhoneMask(document.getElementById('phone2'));
 
-      if (!isPhoneValid(phone.value)) {
-        statusEl.textContent = "Проверьте номер телефона";
-        return;
-      }
-
-      btn.disabled = true;
-      statusEl.textContent = "Отправляем…";
-
+    // ===== Submit helper =====
+    async function submitLead(form, statusEl, btn){
       const fd = new FormData(form);
       const payload = Object.fromEntries(fd.entries());
       payload.page_url = location.href;
       payload.created_at = new Date().toISOString();
+
+      btn.disabled = true;
+      statusEl.textContent = "Отправляем…";
 
       try{
         if (SUBMIT_ENDPOINT){
@@ -302,15 +419,132 @@
         form.reset();
         btn.disabled = false;
 
-        setTimeout(() => {
-          alert("Спасибо! Мы перезвоним в течение 10–20 минут.");
-        }, 120);
-
+        setTimeout(() => alert("Спасибо! Мы перезвоним в течение 10–20 минут."), 120);
       }catch(err){
         console.error(err);
         statusEl.textContent = "Ошибка отправки. Попробуйте ещё раз.";
         btn.disabled = false;
       }
+    }
+
+    // ===== Form 1 =====
+    const form1 = document.getElementById('leadForm1');
+    const status1 = document.getElementById('status1');
+    const btn1 = document.getElementById('submitBtn1');
+    const phone1 = document.getElementById('phone1');
+
+    form1.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!isPhoneValid(phone1.value)) {
+        status1.textContent = "Проверьте номер телефона";
+        return;
+      }
+      submitLead(form1, status1, btn1);
+    });
+
+    // ===== Car list (bottom sheet) =====
+    const cars = [
+      { name: "Changan Uni-Z", price: "100$" },
+      { name: "Camry 70", price: "100$" },
+      { name: "BMW G30", price: "160$" },
+      { name: "Mercedes E300", price: "160$" },
+      { name: "Lexus ES", price: "160$" },
+      { name: "Camry 80", price: "180$" },
+      { name: "BMW 7 series", price: "180$" },
+      { name: "BMW X5 G05", price: "220$" },
+      { name: "Lexus GX", price: "220$" },
+      { name: "BMW X7", price: "250$" },
+      { name: "Land Cruiser 200", price: "300$" },
+      { name: "Mercedes Benz W223", price: "300$" },
+      { name: "BMW M5", price: "350$" },
+    ];
+
+    const sheetBackdrop = document.getElementById('sheetBackdrop');
+    const openCarSheetBtn = document.getElementById('openCarSheet');
+    const closeCarSheetBtn = document.getElementById('closeCarSheet');
+    const carListEl = document.getElementById('carList');
+    const carLabel = document.getElementById('carLabel');
+    const carValue = document.getElementById('carValue');
+    const carSearch = document.getElementById('carSearch');
+
+    function openSheet(){
+      sheetBackdrop.classList.add('open');
+      sheetBackdrop.setAttribute('aria-hidden', 'false');
+      setTimeout(() => carSearch.focus(), 50);
+      renderCars();
+    }
+    function closeSheet(){
+      sheetBackdrop.classList.remove('open');
+      sheetBackdrop.setAttribute('aria-hidden', 'true');
+      carSearch.value = "";
+    }
+
+    openCarSheetBtn.addEventListener('click', openSheet);
+    closeCarSheetBtn.addEventListener('click', closeSheet);
+
+    // click outside sheet to close
+    sheetBackdrop.addEventListener('click', (e) => {
+      if (e.target === sheetBackdrop) closeSheet();
+    });
+
+    function renderCars(){
+      const q = (carSearch.value || "").trim().toLowerCase();
+      const filtered = cars.filter(c => c.name.toLowerCase().includes(q));
+
+      carListEl.innerHTML = filtered.map((c) => `
+        <button type="button"
+          class="w-full text-left px-3 py-3 rounded-2xl hover:bg-white/5 border border-white/10 bg-white/0 mx-2 my-2"
+          data-name="${c.name.replace(/"/g, '&quot;')}"
+        >
+          <div class="flex items-center justify-between">
+            <div class="font-semibold">${c.name}</div>
+            <div class="text-white/70 font-semibold">${c.price}</div>
+          </div>
+          <div class="text-[11px] text-white/50 mt-1">Цена указана за сутки аренды</div>
+        </button>
+      `).join("");
+
+      // bind clicks
+      [...carListEl.querySelectorAll('button[data-name]')].forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.getAttribute('data-name');
+          carLabel.textContent = name;
+          carLabel.className = "text-white font-semibold";
+          carValue.value = name;
+          closeSheet();
+        });
+      });
+
+      if (!filtered.length){
+        carListEl.innerHTML = `
+          <div class="px-4 py-6 text-white/60 text-sm">
+            Ничего не найдено. Попробуйте другой запрос.
+          </div>
+        `;
+      }
+    }
+
+    carSearch.addEventListener('input', renderCars);
+
+    // ===== Form 2 =====
+    const form2 = document.getElementById('leadForm2');
+    const status2 = document.getElementById('status2');
+    const btn2 = document.getElementById('submitBtn2');
+    const phone2 = document.getElementById('phone2');
+
+    form2.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!isPhoneValid(phone2.value)) {
+        status2.textContent = "Проверьте номер телефона";
+        return;
+      }
+      if (!carValue.value) {
+        status2.textContent = "Выберите автомобиль";
+        openSheet();
+        return;
+      }
+      submitLead(form2, status2, btn2);
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
