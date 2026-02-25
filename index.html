@@ -45,13 +45,23 @@
     overflow:hidden;
   }
 
-  /* ✅ ВАЖНО: вместо div-заглушки используем img */
+  /* ✅ Возвращаем “зону фото” как стабильную заглушку (не исчезает никогда) */
   .car-thumb{
     height:140px;
-    width:100%;
-    object-fit:cover;
-    display:block;
-    background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  /* Фото-блоки */
+  .photo-block{
+    height:240px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+    background-size: cover;
+    background-position: center;
   }
 
   .snap-x{
@@ -141,17 +151,13 @@
   </div>
 </section>
 
-<!-- PHOTO BLOCK 1 -->
+<!-- PHOTO BLOCK 1 (после 1-й лидформы) -->
 <section class="container-fix pb-14">
   <div class="glass overflow-hidden">
-    <!-- ⚠️ Сейчас стоит collection-ссылка (может НЕ отображаться как картинка).
-         ✅ ЗАМЕНИ на Delivery URL вида https://res.cloudinary.com/dc2n4hmij/image/upload/... -->
-    <img
-      src="https://collection.cloudinary.com/dc2n4hmij/df62bdf3c51cb7544b5b135f6c9d5401"
-      class="w-full h-[240px] object-cover opacity-80"
-      alt=""
-      onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<div class=&quot;w-full h-[240px]&quot; style=&quot;background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02))&quot;></div>');"
-    >
+    <div
+      class="photo-block opacity-80"
+      style="background-image:url('https://collection.cloudinary.com/dc2n4hmij/df62bdf3c51cb7544b5b135f6c9d5401');">
+    </div>
   </div>
 </section>
 
@@ -209,7 +215,6 @@
     </div>
 
     <form id="leadForm2" class="mt-6 space-y-4" autocomplete="off">
-      <!-- ✅ весь список машин с ценами -->
       <select name="car" required
         class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30">
         <option value="" selected disabled>Выберите автомобиль</option>
@@ -248,13 +253,7 @@
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
       <article class="car-card">
-        <!-- ⚠️ collection-link может не работать как img.
-             ✅ Заменить на Delivery URL (res.cloudinary.com...) -->
-        <img class="car-thumb"
-             src="https://collection.cloudinary.com/dc2n4hmij/25eafaf2be8099824f8c1a3d6862212a"
-             alt="BMW M5"
-             onerror="this.style.display='none';"
-        >
+        <div class="car-thumb" style="background-image:url('https://collection.cloudinary.com/dc2n4hmij/25eafaf2be8099824f8c1a3d6862212a');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">BMW M5</div>
@@ -268,11 +267,7 @@
       </article>
 
       <article class="car-card">
-        <img class="car-thumb"
-             src="https://collection.cloudinary.com/dc2n4hmij/d168b956d1a266a473c0f391b69d7765"
-             alt="Land Cruiser 200"
-             onerror="this.style.display='none';"
-        >
+        <div class="car-thumb" style="background-image:url('https://collection.cloudinary.com/dc2n4hmij/d168b956d1a266a473c0f391b69d7765');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">Land Cruiser 200</div>
@@ -286,11 +281,7 @@
       </article>
 
       <article class="car-card">
-        <img class="car-thumb"
-             src="https://collection.cloudinary.com/dc2n4hmij/82bfa083b37a3dca875f539943c5d2cf"
-             alt="BMW X7"
-             onerror="this.style.display='none';"
-        >
+        <div class="car-thumb" style="background-image:url('https://collection.cloudinary.com/dc2n4hmij/82bfa083b37a3dca875f539943c5d2cf');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">BMW X7</div>
@@ -304,11 +295,7 @@
       </article>
 
       <article class="car-card">
-        <img class="car-thumb"
-             src="https://collection.cloudinary.com/dc2n4hmij/012836217a0b79ae39b1d2c564a43911"
-             alt="BMW X5 G05"
-             onerror="this.style.display='none';"
-        >
+        <div class="car-thumb" style="background-image:url('https://collection.cloudinary.com/dc2n4hmij/012836217a0b79ae39b1d2c564a43911');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">BMW X5 G05</div>
@@ -381,14 +368,11 @@
 <!-- PHOTO BLOCK (after reviews) -->
 <section class="container-fix pb-16">
   <div class="glass overflow-hidden">
-    <!-- ⚠️ Пока нет 6-й картинки. Как появится — вставишь Delivery URL сюда.
-         Сейчас оставил первую (для визуала). -->
-    <img
-      src="https://collection.cloudinary.com/dc2n4hmij/df62bdf3c51cb7544b5b135f6c9d5401"
-      class="w-full h-[240px] object-cover opacity-80"
-      alt=""
-      onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<div class=&quot;w-full h-[240px]&quot; style=&quot;background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02))&quot;></div>');"
-    >
+    <!-- пока ставлю 4-ю ссылку как “второй фото-блок” -->
+    <div
+      class="photo-block opacity-80"
+      style="background-image:url('https://collection.cloudinary.com/dc2n4hmij/82bfa083b37a3dca875f539943c5d2cf');">
+    </div>
   </div>
 </section>
 
