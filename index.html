@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Премиум авто в аренду — Бишкек</title>
+  <meta name="description" content="Премиальные автомобили в аренду в Бишкеке. Оставьте номер — перезвоним быстро." />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --r-2xl: 26px;
+      --r-xl: 20px;
+      --glass: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.14);
+    }
+    html, body { height: 100%; }
+    body { font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+    /* Premium background vibe */
+    .bg-premium{
+      background:
+        radial-gradient(900px 500px at 70% 20%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(700px 450px at 20% 55%, rgba(255,255,255,.06), transparent 65%),
+        linear-gradient(180deg, #070707 0%, #0a0a0a 55%, #070707 100%);
+    }
+
+    /* Subtle noise */
+    .noise:before{
+      content:"";
+      position:absolute; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity: .18;
+      pointer-events:none;
+    }
+
+    .glass{
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+      border-radius: var(--r-2xl);
+    }
+
+    .hairline{
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* nicer inputs on iOS */
+    input{
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    /* Big background typography like your ref */
+    .bg-type{
+      position:absolute; inset: -40px -20px auto -20px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: .9;
+      opacity:.10;
+      filter: blur(.2px);
+      user-select:none;
+      pointer-events:none;
+      white-space:nowrap;
+    }
+    .bg-type span{
+      display:block;
+      font-size: clamp(56px, 9vw, 120px);
+    }
+
+    /* Button */
+    .btn{
+      border-radius: 999px;
+      background: #fff;
+      color: #0a0a0a;
+      font-weight: 800;
+      padding: 14px 18px;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-ghost{
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 10px 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,.92);
+    }
+
+    /* Small chips */
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+
+<body class="bg-premium text-white">
+  <!-- Top bar -->
+  <header class="sticky top-0 z-50">
+    <div class="bg-black/35 backdrop-blur border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          <div class="font-extrabold tracking-wide">PREMIUM RENT</div>
+        </div>
+
+        <a href="#form" class="btn-ghost text-sm">Оставить заявку</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden noise">
+    <!-- Big background type -->
+    <div class="bg-type">
+      <span>Premium</span>
+      <span>Rent</span>
+    </div>
+
+    <!-- Background image (optional) -->
+    <div class="absolute inset-0 -z-10">
+      <!-- Если нет картинки — можешь удалить этот img -->
+      <img src="images/hero.jpg" alt="" class="w-full h-full object-cover opacity-20" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 pt-10 pb-10">
+      <div class="grid lg:grid-cols-2 gap-6 items-start">
+        <!-- LEFT -->
+        <div class="pt-2">
+          <div class="chip text-xs text-white/85">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            Бишкек • Премиум класс • Только аренда
+          </div>
+
+          <h1 class="mt-5 text-[34px] sm:text-[42px] leading-[1.05] font-black tracking-[-0.04em]">
+            Премиальные авто<br class="hidden sm:block" /> в аренду в Бишкеке
+          </h1>
+
+          <p class="mt-4 text-white/75 text-base leading-relaxed max-w-xl">
+            Оставьте номер — мы перезвоним быстро и подберём вариант под вашу задачу.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="btn-ghost text-xs">Быстрая выдача</span>
+            <span class="btn-ghost text-xs">Договор</span>
+            <span class="btn-ghost text-xs">Поддержка 24/7</span>
+          </div>
+        </div>
+
+        <!-- FORM CARD -->
+        <div id="form" class="glass p-5 sm:p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-xl font-extrabold tracking-[-0.02em]">
+                Получить быстрый обратный звонок
+              </div>
+              <div class="text-sm text-white/70 mt-1">
+                Перезвоним и уточним детали аренды
+              </div>
+            </div>
+
+            <div class="text-[11px] text-white/65 text-right">
+              Ответим<br><span class="font-semibold text-white">10–20 мин</span>
+            </div>
+          </div>
+
+          <div class="hairline mt-5"></div>
+
+          <form id="leadForm" class="mt-5 space-y-3" autocomplete="off">
+            <!-- Mobile-first: в одну колонку -->
+            <div>
+              <label class="text-xs text-white/70">Имя</label>
+              <input name="name" required
+                class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 outline-none focus:border-white/30"
+                placeholder="Бек" />
+            </div>
+
+            <div>
+              <label class="text-xs text-white/70">Телефон</label>
+              <input id="phone" name="phone" required inputmode="tel"
+                class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 outline-none focus:border-white/30"
+                placeholder="+996 ___ ___ ___" />
+              <div class="mt-2 text-[11px] text-white/55">
+                Нажимая “Заказать звонок”, вы подтверждаете корректность номера.
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <span id="status" class="text-[12px] text-white/70"></span>
+              <span class="text-[12px] text-white/55">Бишкек</span>
+            </div>
+
+            <button id="submitBtn" type="submit" class="w-full btn py-3.5">
+              Заказать звонок
+            </button>
+
+            <div class="text-[12px] text-white/55">
+              Мы не используем автоответы — только живой звонок.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / BENEFITS (минимально, чтобы не перегружать) -->
+  <section class="max-w-6xl mx-auto px-4 pb-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="glass p-4">
+        <div class="text-sm text-white/70">Сервис</div>
+        <div class="mt-1 font-bold">Подача и сопровождение</div>
+      </div>
+      <div class="glass p-4">
+        <div class="text-sm text-white/70">Прозрачность</div>
+        <div class="mt-1 font-bold">Договор без сюрпризов</div>
+      </div>
+      <div class="glass p-4">
+        <div class="text-sm text-white/70">Скорость</div>
+        <div class="mt-1 font-bold">Оформление быстро</div>
+      </div>
+      <div class="glass p-4">
+        <div class="text-sm text-white/70">Поддержка</div>
+        <div class="mt-1 font-bold">24/7 на связи</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-white/55">
+      © <span id="year"></span> Premium Rent • Бишкек
+    </div>
+  </footer>
+
+  <script>
+    // Позже сюда вставим URL Google Apps Script, чтобы заявки падали в таблицу
+    const SUBMIT_ENDPOINT = ""; // пример: "https://script.google.com/macros/s/XXXXX/exec"
+
+    const form = document.getElementById('leadForm');
+    const phone = document.getElementById('phone');
+    const btn = document.getElementById('submitBtn');
+    const statusEl = document.getElementById('status');
+
+    // Простая маска номера
+    phone.addEventListener('input', () => {
+      let v = phone.value.replace(/[^\d+]/g, '');
+      if (!v.startsWith('+')) v = '+996' + v.replace(/^996/, '');
+      v = '+' + v.replace(/\+/g,'');
+      phone.value = v;
+    });
+
+    function isPhoneValid(value){
+      const digits = value.replace(/\D/g,'');
+      return digits.length >= 12; // 996 + 9 цифр
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!isPhoneValid(phone.value)) {
+        statusEl.textContent = "Проверьте номер телефона";
+        return;
+      }
+
+      btn.disabled = true;
+      statusEl.textContent = "Отправляем…";
+
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+      payload.page_url = location.href;
+      payload.created_at = new Date().toISOString();
+
+      try{
+        if (SUBMIT_ENDPOINT){
+          const res = await fetch(SUBMIT_ENDPOINT, {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error("Bad response");
+        }
+
+        statusEl.textContent = "Заявка отправлена ✓";
+        form.reset();
+        btn.disabled = false;
+
+        setTimeout(() => {
+          alert("Спасибо! Мы перезвоним в течение 10–20 минут.");
+        }, 120);
+
+      }catch(err){
+        console.error(err);
+        statusEl.textContent = "Ошибка отправки. Попробуйте ещё раз.";
+        btn.disabled = false;
+      }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
