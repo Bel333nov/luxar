@@ -18,7 +18,6 @@
       --r-xl: 20px;
       --glass: rgba(255,255,255,.06);
       --stroke: rgba(255,255,255,.10);
-      --stroke2: rgba(255,255,255,.14);
     }
     html, body { height: 100%; }
     body { font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
@@ -67,18 +66,6 @@
       color: rgba(255,255,255,.92);
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Big background type */
     .bg-type{
       position:absolute; inset: -50px -20px auto -20px;
       font-weight: 900;
@@ -119,6 +106,14 @@
       background: rgba(255,255,255,.18);
       margin: 10px auto 6px;
     }
+
+    /* Clean metric cards (без glass) */
+    .metric{
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
   </style>
 </head>
 
@@ -144,9 +139,8 @@
       <span>AUTORENT</span>
     </div>
 
-    <!-- Background image (место под красивое фото) -->
+    <!-- Background image -->
     <div class="absolute inset-0 -z-10">
-      <!-- Положи файл: images/hero.jpg -->
       <img src="images/hero.jpg" alt="" class="w-full h-full object-cover opacity-30" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/70 to-black"></div>
     </div>
@@ -155,23 +149,19 @@
       <div class="grid lg:grid-cols-2 gap-6 items-start">
         <!-- LEFT -->
         <div class="pt-2">
-          <div class="pill text-xs text-white/85">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            Высокий сервис
-          </div>
-
-          <h1 class="mt-5 text-[34px] sm:text-[44px] leading-[1.05] font-black tracking-[-0.04em]">
+          <h1 class="mt-2 text-[34px] sm:text-[44px] leading-[1.05] font-black tracking-[-0.04em]">
             Премиальная аренда авто<br class="hidden sm:block" /> в Бишкеке
           </h1>
 
           <p class="mt-4 text-white/75 text-base leading-relaxed max-w-xl">
-            Оставьте номер — перезвоним быстро и предложим лучший вариант под вашу задачу.
+            Оставьте номер — мы перезвоним быстро и предложим лучший вариант под вашу задачу.
           </p>
 
-          <div class="mt-6 flex flex-wrap gap-2">
-            <span class="btn-ghost text-xs">Деловые встречи</span>
-            <span class="btn-ghost text-xs">Свадьбы / события</span>
-            <span class="btn-ghost text-xs">Отдых / поездки</span>
+          <!-- ✅ 3 плашки: в 2 линии на мобиле -->
+          <div class="mt-6 flex flex-wrap gap-2 max-w-[520px]">
+            <span class="btn-ghost text-xs">Премиальные авто</span>
+            <span class="btn-ghost text-xs">Высокий сервис</span>
+            <span class="btn-ghost text-xs">Договор</span>
           </div>
         </div>
 
@@ -235,58 +225,42 @@
       </h2>
       <p class="mt-3 text-white/70 leading-relaxed max-w-3xl">
         В автопарке <span class="text-white font-semibold">13 премиальных автомобилей</span> — под любой формат:
-        от деловых встреч до комфортного отдыха. Мы делаем сервис, к которому хочется возвращаться.
+        от деловых встреч до комфортного отдыха.
       </p>
     </div>
   </section>
 
-  <!-- METRICS (4 blocks) -->
-  <section class="max-w-6xl mx-auto px-4 pb-10">
+  <!-- METRICS (4 blocks) — ✅ без стекла -->
+  <section class="max-w-6xl mx-auto px-4 pb-12">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-      <div class="glass p-4">
+      <div class="metric p-5">
         <div class="text-sm text-white/60">Автопарк</div>
-        <div class="mt-1 text-2xl font-black">13</div>
+        <div class="mt-2 text-3xl font-black">13</div>
         <div class="text-sm text-white/70">премиальных машин</div>
       </div>
 
-      <div class="glass p-4">
+      <div class="metric p-5">
         <div class="text-sm text-white/60">Доверие</div>
-        <div class="mt-1 text-2xl font-black">300+</div>
+        <div class="mt-2 text-3xl font-black">300+</div>
         <div class="text-sm text-white/70">довольных клиентов</div>
       </div>
 
-      <div class="glass p-4">
+      <div class="metric p-5">
         <div class="text-sm text-white/60">Защита</div>
-        <div class="mt-1 text-2xl font-black">КАСКО</div>
+        <div class="mt-2 text-3xl font-black">КАСКО</div>
         <div class="text-sm text-white/70">+ ОСАГО</div>
       </div>
 
-      <div class="glass p-4">
+      <div class="metric p-5">
         <div class="text-sm text-white/60">Комфорт</div>
-        <div class="mt-1 text-2xl font-black">Тонировка</div>
+        <div class="mt-2 text-3xl font-black">Тонировка</div>
         <div class="text-sm text-white/70">с разрешением</div>
       </div>
     </div>
   </section>
 
-  <!-- OPTIONAL: Price image (если хочешь показать прайс как на скрине) -->
-  <section class="max-w-6xl mx-auto px-4 pb-10">
-    <div class="glass overflow-hidden">
-      <div class="p-5 sm:p-6 flex items-center justify-between gap-3">
-        <div>
-          <div class="text-xs text-white/60 font-semibold tracking-wide">АКТУАЛЬНЫЙ ПРАЙС</div>
-          <div class="mt-1 font-bold">Можно оставить как фото-скрин</div>
-        </div>
-        <a href="#lead-2" class="btn-ghost text-sm">Выбрать авто</a>
-      </div>
-      <div class="hairline"></div>
-      <!-- Положи файл: images/price.jpg (если есть). Если нет — можешь удалить этот блок полностью -->
-      <img src="images/price.jpg" alt="Прайс" class="w-full max-h-[520px] object-cover opacity-90" />
-    </div>
-  </section>
-
   <!-- FORM 2 with car picker -->
-  <section class="max-w-6xl mx-auto px-4 pb-14">
+  <section class="max-w-6xl mx-auto px-4 pb-6">
     <div id="lead-2" class="glass p-5 sm:p-7">
       <div class="flex items-start justify-between gap-4">
         <div>
@@ -306,6 +280,19 @@
       <div class="hairline mt-5"></div>
 
       <form id="leadForm2" class="mt-5 grid gap-3" autocomplete="off">
+        <!-- ✅ 1) Авто первым -->
+        <div>
+          <label class="text-xs text-white/70">Автомобиль</label>
+
+          <button type="button" id="openCarSheet"
+            class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 text-left outline-none focus:border-white/30">
+            <span id="carLabel" class="text-white/75">Выберите автомобиль</span>
+            <span class="float-right text-white/40">▴</span>
+          </button>
+
+          <input type="hidden" name="car" id="carValue" required />
+        </div>
+
         <div>
           <label class="text-xs text-white/70">Имя</label>
           <input name="name" required
@@ -320,24 +307,6 @@
             placeholder="+996 ___ ___ ___" />
         </div>
 
-        <!-- Car picker field -->
-        <div>
-          <label class="text-xs text-white/70">Автомобиль</label>
-
-          <!-- this is a "fake select" that opens bottom sheet -->
-          <button type="button" id="openCarSheet"
-            class="mt-1 w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3.5 text-left outline-none focus:border-white/30">
-            <span id="carLabel" class="text-white/75">Выберите автомобиль</span>
-            <span class="float-right text-white/40">▴</span>
-          </button>
-
-          <!-- hidden input for form submit -->
-          <input type="hidden" name="car" id="carValue" required />
-          <div class="mt-2 text-[11px] text-white/55">
-            Список открывается снизу вверх.
-          </div>
-        </div>
-
         <div class="flex items-center justify-between gap-3">
           <span id="status2" class="text-[12px] text-white/70"></span>
           <span class="text-[12px] text-white/55">Бишкек</span>
@@ -347,6 +316,18 @@
           Отправить заявку
         </button>
       </form>
+    </div>
+  </section>
+
+  <!-- ✅ Небольшое место под фото после лидформы -->
+  <section class="max-w-6xl mx-auto px-4 pb-14">
+    <div class="glass overflow-hidden">
+      <div class="p-4 sm:p-5 flex items-center justify-between">
+        <div class="text-sm text-white/70">Фото автопарка / салона</div>
+        <a href="#lead-1" class="btn-ghost text-xs">Оставить заявку</a>
+      </div>
+      <!-- Положи файл: images/after.jpg (если будет). Если нет — можно оставить hero.jpg -->
+      <img src="images/after.jpg" alt="" class="w-full h-[180px] object-cover opacity-80" onerror="this.src='images/hero.jpg';" />
     </div>
   </section>
 
@@ -366,7 +347,7 @@
       </div>
 
       <div class="px-4 pb-3">
-        <input id="carSearch" type="text" placeholder="Поиск (например: Camry, BMW, W223)"
+        <input id="carSearch" type="text" placeholder="Поиск (например: BMW, W223, Camry)"
           class="w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3 outline-none focus:border-white/30" />
       </div>
 
@@ -376,9 +357,8 @@
 
   <script>
     // Позже сюда вставим URL Google Apps Script, чтобы заявки падали в таблицу
-    const SUBMIT_ENDPOINT = ""; // пример: "https://script.google.com/macros/s/XXXXX/exec"
+    const SUBMIT_ENDPOINT = "";
 
-    // ===== Phones mask =====
     function attachPhoneMask(input){
       input.addEventListener('input', () => {
         let v = input.value.replace(/[^\d+]/g, '');
@@ -389,13 +369,12 @@
     }
     function isPhoneValid(value){
       const digits = value.replace(/\D/g,'');
-      return digits.length >= 12; // 996 + 9 цифр
+      return digits.length >= 12;
     }
 
     attachPhoneMask(document.getElementById('phone1'));
     attachPhoneMask(document.getElementById('phone2'));
 
-    // ===== Submit helper =====
     async function submitLead(form, statusEl, btn){
       const fd = new FormData(form);
       const payload = Object.fromEntries(fd.entries());
@@ -427,7 +406,7 @@
       }
     }
 
-    // ===== Form 1 =====
+    // Form 1
     const form1 = document.getElementById('leadForm1');
     const status1 = document.getElementById('status1');
     const btn1 = document.getElementById('submitBtn1');
@@ -435,28 +414,25 @@
 
     form1.addEventListener('submit', (e) => {
       e.preventDefault();
-      if (!isPhoneValid(phone1.value)) {
-        status1.textContent = "Проверьте номер телефона";
-        return;
-      }
+      if (!isPhoneValid(phone1.value)) { status1.textContent = "Проверьте номер телефона"; return; }
       submitLead(form1, status1, btn1);
     });
 
-    // ===== Car list (bottom sheet) =====
+    // Cars — ✅ отсортировано от дорогого к дешёвому
     const cars = [
-      { name: "Changan Uni-Z", price: "100$" },
-      { name: "Camry 70", price: "100$" },
+      { name: "BMW M5", price: "350$" },
+      { name: "Land Cruiser 200", price: "300$" },
+      { name: "Mercedes Benz W223", price: "300$" },
+      { name: "BMW X7", price: "250$" },
+      { name: "BMW X5 G05", price: "220$" },
+      { name: "Lexus GX", price: "220$" },
+      { name: "Camry 80", price: "180$" },
+      { name: "BMW 7 series", price: "180$" },
       { name: "BMW G30", price: "160$" },
       { name: "Mercedes E300", price: "160$" },
       { name: "Lexus ES", price: "160$" },
-      { name: "Camry 80", price: "180$" },
-      { name: "BMW 7 series", price: "180$" },
-      { name: "BMW X5 G05", price: "220$" },
-      { name: "Lexus GX", price: "220$" },
-      { name: "BMW X7", price: "250$" },
-      { name: "Land Cruiser 200", price: "300$" },
-      { name: "Mercedes Benz W223", price: "300$" },
-      { name: "BMW M5", price: "350$" },
+      { name: "Changan Uni-Z", price: "100$" },
+      { name: "Camry 70", price: "100$" },
     ];
 
     const sheetBackdrop = document.getElementById('sheetBackdrop');
@@ -481,11 +457,7 @@
 
     openCarSheetBtn.addEventListener('click', openSheet);
     closeCarSheetBtn.addEventListener('click', closeSheet);
-
-    // click outside sheet to close
-    sheetBackdrop.addEventListener('click', (e) => {
-      if (e.target === sheetBackdrop) closeSheet();
-    });
+    sheetBackdrop.addEventListener('click', (e) => { if (e.target === sheetBackdrop) closeSheet(); });
 
     function renderCars(){
       const q = (carSearch.value || "").trim().toLowerCase();
@@ -500,11 +472,9 @@
             <div class="font-semibold">${c.name}</div>
             <div class="text-white/70 font-semibold">${c.price}</div>
           </div>
-          <div class="text-[11px] text-white/50 mt-1">Цена указана за сутки аренды</div>
         </button>
       `).join("");
 
-      // bind clicks
       [...carListEl.querySelectorAll('button[data-name]')].forEach(btn => {
         btn.addEventListener('click', () => {
           const name = btn.getAttribute('data-name');
@@ -516,17 +486,12 @@
       });
 
       if (!filtered.length){
-        carListEl.innerHTML = `
-          <div class="px-4 py-6 text-white/60 text-sm">
-            Ничего не найдено. Попробуйте другой запрос.
-          </div>
-        `;
+        carListEl.innerHTML = `<div class="px-4 py-6 text-white/60 text-sm">Ничего не найдено.</div>`;
       }
     }
-
     carSearch.addEventListener('input', renderCars);
 
-    // ===== Form 2 =====
+    // Form 2
     const form2 = document.getElementById('leadForm2');
     const status2 = document.getElementById('status2');
     const btn2 = document.getElementById('submitBtn2');
@@ -534,16 +499,8 @@
 
     form2.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      if (!isPhoneValid(phone2.value)) {
-        status2.textContent = "Проверьте номер телефона";
-        return;
-      }
-      if (!carValue.value) {
-        status2.textContent = "Выберите автомобиль";
-        openSheet();
-        return;
-      }
+      if (!carValue.value) { status2.textContent = "Выберите автомобиль"; openSheet(); return; }
+      if (!isPhoneValid(phone2.value)) { status2.textContent = "Проверьте номер телефона"; return; }
       submitLead(form2, status2, btn2);
     });
 
