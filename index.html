@@ -1,4 +1,140 @@
-<!-- FLEET (4 cars, cleaner layout) -->
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LUXAR AUTORENT — Премиум аренда авто Бишкек</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family: Manrope, sans-serif;
+  background: linear-gradient(180deg,#070707,#0b0b0b);
+}
+.container-fix{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.glass{
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(14px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;
+}
+.btn{
+  background:#fff;
+  color:#000;
+  font-weight:900;
+  border-radius:999px;
+  padding:14px;
+}
+.btn-ghost{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:999px;
+  padding:8px 14px;
+}
+.car-card{
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  overflow:hidden;
+}
+.car-thumb{
+  height:140px;
+  background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+</style>
+</head>
+
+<body class="text-white">
+
+<!-- HEADER -->
+<header class="sticky top-0 backdrop-blur bg-black/40 border-b border-white/10 z-50">
+  <div class="container-fix py-3 flex justify-between items-center">
+    <div class="font-black tracking-wide">LUXAR AUTORENT</div>
+    <a href="#lead1" class="btn-ghost text-sm">Оставить заявку</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="container-fix pt-14 pb-14">
+  <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+    <div>
+      <h1 class="text-4xl font-black leading-tight tracking-tight">
+        Аренда авто премиум-класса
+      </h1>
+
+      <div class="flex flex-wrap gap-2 mt-6">
+        <span class="btn-ghost text-xs">Премиальные авто</span>
+        <span class="btn-ghost text-xs">Высокий сервис</span>
+        <span class="btn-ghost text-xs">Договор</span>
+      </div>
+    </div>
+
+    <!-- LEAD 1 -->
+    <div id="lead1" class="glass p-6">
+      <div class="flex justify-between items-start">
+        <div>
+          <div class="text-xl font-black">Получить быстрый обратный звонок</div>
+          <div class="text-sm text-white/60 mt-1">
+            Перезвоним и уточним детали аренды
+          </div>
+        </div>
+        <div class="text-xs text-white/60 text-right">
+          Ответим<br><span class="font-semibold text-white">10–20 мин</span>
+        </div>
+      </div>
+
+      <form class="mt-6 space-y-4">
+        <input type="text" placeholder="Ваше имя"
+          class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
+
+        <input type="tel" placeholder="+996 ___ ___ ___"
+          class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
+
+        <button class="btn w-full">Заказать звонок</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHOTO BLOCK 1 -->
+<section class="container-fix pb-14">
+  <div class="glass overflow-hidden">
+    <img src="images/hero.jpg" class="w-full h-[240px] object-cover opacity-80">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="container-fix pb-14">
+  <div class="glass p-6">
+    <div class="text-xs text-white/60 font-semibold tracking-wide">О НАС</div>
+    <h2 class="mt-2 text-2xl font-black">LUXAR AUTORENT</h2>
+    <p class="mt-4 text-white/70 leading-relaxed">
+      В автопарке 13 премиальных автомобилей — под любой формат:
+      от деловых встреч до комфортного отдыха.
+      Мы делаем сервис, к которому хочется возвращаться.
+      <span class="text-white font-semibold">Ваш комфорт – наш стандарт.</span>
+    </p>
+  </div>
+</section>
+
+<!-- PHOTO BLOCK 2 -->
+<section class="container-fix pb-14">
+  <div class="glass overflow-hidden">
+    <img src="images/after.jpg"
+         onerror="this.src='images/hero.jpg';"
+         class="w-full h-[240px] object-cover opacity-80">
+  </div>
+</section>
+
+<!-- FLEET -->
 <section id="fleet" class="container-fix pb-20">
   <div class="glass p-6">
 
@@ -12,16 +148,14 @@
       <article class="car-card">
         <div class="car-thumb"></div>
         <div class="p-5">
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between">
             <div class="font-extrabold">BMW M5</div>
-            <div class="text-white/80 font-semibold">350$</div>
+            <div class="font-semibold text-white/80">350$</div>
           </div>
-          <div class="mt-3 text-[13px] text-white/55 leading-relaxed">
-            Максимальная динамика и статус для особых случаев.
+          <div class="mt-3 text-sm text-white/55">
+            Максимальная динамика и статус.
           </div>
-          <a href="#lead2" class="mt-4 inline-block btn-ghost text-xs">
-            Забронировать
-          </a>
+          <a href="#lead1" class="mt-4 inline-block btn-ghost text-xs">Забронировать</a>
         </div>
       </article>
 
@@ -29,16 +163,14 @@
       <article class="car-card">
         <div class="car-thumb"></div>
         <div class="p-5">
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between">
             <div class="font-extrabold">Land Cruiser 200</div>
-            <div class="text-white/80 font-semibold">300$</div>
+            <div class="font-semibold text-white/80">300$</div>
           </div>
-          <div class="mt-3 text-[13px] text-white/55 leading-relaxed">
-            Премиальный SUV для города и любых дорог.
+          <div class="mt-3 text-sm text-white/55">
+            Премиальный SUV для любых дорог.
           </div>
-          <a href="#lead2" class="mt-4 inline-block btn-ghost text-xs">
-            Забронировать
-          </a>
+          <a href="#lead1" class="mt-4 inline-block btn-ghost text-xs">Забронировать</a>
         </div>
       </article>
 
@@ -46,16 +178,14 @@
       <article class="car-card">
         <div class="car-thumb"></div>
         <div class="p-5">
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between">
             <div class="font-extrabold">BMW X7</div>
-            <div class="text-white/80 font-semibold">250$</div>
+            <div class="font-semibold text-white/80">250$</div>
           </div>
-          <div class="mt-3 text-[13px] text-white/55 leading-relaxed">
-            Простор и премиальный комфорт для поездок.
+          <div class="mt-3 text-sm text-white/55">
+            Простор и премиальный комфорт.
           </div>
-          <a href="#lead2" class="mt-4 inline-block btn-ghost text-xs">
-            Забронировать
-          </a>
+          <a href="#lead1" class="mt-4 inline-block btn-ghost text-xs">Забронировать</a>
         </div>
       </article>
 
@@ -63,26 +193,31 @@
       <article class="car-card">
         <div class="car-thumb"></div>
         <div class="p-5">
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between">
             <div class="font-extrabold">BMW X5 G05</div>
-            <div class="text-white/80 font-semibold">220$</div>
+            <div class="font-semibold text-white/80">220$</div>
           </div>
-          <div class="mt-3 text-[13px] text-white/55 leading-relaxed">
-            Универсальный премиум SUV для дел и отдыха.
+          <div class="mt-3 text-sm text-white/55">
+            Универсальный премиум SUV.
           </div>
-          <a href="#lead2" class="mt-4 inline-block btn-ghost text-xs">
-            Забронировать
-          </a>
+          <a href="#lead1" class="mt-4 inline-block btn-ghost text-xs">Забронировать</a>
         </div>
       </article>
 
     </div>
 
     <div class="mt-10 text-center">
-      <a href="#lead2" class="btn px-10 inline-block">
+      <a href="#lead1" class="btn px-10 inline-block">
         Увидеть весь автопарк
       </a>
     </div>
 
   </div>
 </section>
+
+<footer class="border-t border-white/10 py-8 text-center text-white/50 text-sm">
+  © 2026 LUXAR AUTORENT • Бишкек
+</footer>
+
+</body>
+</html>
