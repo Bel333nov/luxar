@@ -8,6 +8,10 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+<!-- (минимально) preconnect для ускорения загрузки Cloudinary -->
+<link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+<link rel="dns-prefetch" href="https://res.cloudinary.com">
+
 <style>
   body{
     font-family: Manrope, sans-serif;
@@ -24,20 +28,58 @@
     border:1px solid rgba(255,255,255,.1);
     border-radius:24px;
   }
+
+  /* ✅ Кнопки синие + легкий flash (shine) */
   .btn{
-    background:#fff;
-    color:#000;
+    background:#2563eb; /* blue-600 */
+    color:#fff;
     font-weight:900;
     border-radius:999px;
     padding:14px;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
   }
   .btn:active{ transform: translateY(1px); }
+
+  /* shine-полоска */
+  .btn::after{
+    content:"";
+    position:absolute;
+    top:-35%;
+    left:-120%;
+    width:60%;
+    height:170%;
+    transform: rotate(20deg);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+    opacity: .9;
+    animation: btnShine 2.8s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes btnShine{
+    0%   { left:-120%; opacity:.0; }
+    10%  { opacity:.6; }
+    40%  { left:140%; opacity:.0; }
+    100% { left:140%; opacity:.0; }
+  }
+
+  /* мягкий pulse (минимальный) */
+  .btn{
+    animation: btnPulse 2.6s ease-in-out infinite;
+  }
+  @keyframes btnPulse{
+    0%,100% { box-shadow: 0 0 0 rgba(37,99,235,0); }
+    50%     { box-shadow: 0 0 0 10px rgba(37,99,235,0.10); }
+  }
+
+  /* ghost без изменений */
   .btn-ghost{
     background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.1);
     border-radius:999px;
     padding:8px 14px;
   }
+
   .car-card{
     border-radius:22px;
     border:1px solid rgba(255,255,255,.10);
@@ -99,6 +141,22 @@
     font-weight: 900;
     color: rgba(255,255,255,.85);
   }
+
+  /* ✅ Минималистичная анимация появления секций */
+  .reveal{
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .55s ease, transform .55s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.in{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn, .btn::after{ animation: none !important; }
+    .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
 </style>
 </head>
 
@@ -113,7 +171,7 @@
 </header>
 
 <!-- HERO -->
-<section class="container-fix pt-14 pb-14">
+<section class="container-fix pt-14 pb-14 reveal">
   <div class="grid lg:grid-cols-2 gap-12 items-start">
     <div>
       <h1 class="text-4xl font-black leading-tight tracking-tight">
@@ -152,17 +210,17 @@
 </section>
 
 <!-- PHOTO BLOCK 1 (после 1-й лидформы) -->
-<section class="container-fix pb-14">
+<section class="container-fix pb-14 reveal">
   <div class="glass overflow-hidden">
     <div
       class="photo-block opacity-80"
-      style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/v1772051898/freepik__-__10075_gcfi7k.png');">
+      style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/f_auto,q_auto,w_1600/v1772051898/freepik__-__10075_gcfi7k.png');">
     </div>
   </div>
 </section>
 
 <!-- ABOUT + ADVANTAGES (без стекла) -->
-<section class="container-fix pb-16">
+<section class="container-fix pb-16 reveal">
   <div>
     <div class="text-xs text-white/60 font-semibold tracking-wide">О НАС</div>
     <h2 class="mt-2 text-2xl font-black">LUXAR AUTORENT</h2>
@@ -199,7 +257,7 @@
 </section>
 
 <!-- LEAD 2 (вернули) -->
-<section class="container-fix pb-16">
+<section class="container-fix pb-16 reveal">
   <div id="lead2" class="glass p-6">
     <div class="flex justify-between items-start">
       <div>
@@ -246,14 +304,14 @@
 </section>
 
 <!-- FLEET -->
-<section id="fleet" class="container-fix pb-20">
+<section id="fleet" class="container-fix pb-20 reveal">
   <div class="glass p-6">
     <div class="text-xs text-white/60 font-semibold tracking-wide">АВТОПАРК</div>
 
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
       <article class="car-card">
-        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/v1772052021/IMG_8032_2_q9mcuc.jpg');"></div>
+        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/f_auto,q_auto,w_900/v1772052021/IMG_8032_2_q9mcuc.jpg');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">BMW M5</div>
@@ -267,7 +325,7 @@
       </article>
 
       <article class="car-card">
-        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/v1772052135/freepik__-__6913_r2s2am.png');"></div>
+        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/f_auto,q_auto,w_900/v1772052135/freepik__-__6913_r2s2am.png');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">Land Cruiser 200</div>
@@ -281,7 +339,7 @@
       </article>
 
       <article class="car-card">
-        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/v1772052286/photo_5425033390299221145_y_ligtxq.jpg');"></div>
+        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/f_auto,q_auto,w_900/v1772052286/photo_5425033390299221145_y_ligtxq.jpg');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">BMW X7</div>
@@ -295,7 +353,7 @@
       </article>
 
       <article class="car-card">
-        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/v1772052219/freepik__-__6911_gow3so.png');"></div>
+        <div class="car-thumb" style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/f_auto,q_auto,w_900/v1772052219/freepik__-__6911_gow3so.png');"></div>
         <div class="p-5">
           <div class="flex justify-between">
             <div class="font-extrabold">BMW X5 G05</div>
@@ -319,7 +377,7 @@
 </section>
 
 <!-- REVIEWS -->
-<section class="container-fix pb-16">
+<section class="container-fix pb-16 reveal">
   <div class="flex items-end justify-between gap-4">
     <div>
       <div class="text-xs text-white/60 font-semibold tracking-wide">ОТЗЫВЫ</div>
@@ -366,17 +424,17 @@
 </section>
 
 <!-- PHOTO BLOCK (after reviews) -->
-<section class="container-fix pb-16">
+<section class="container-fix pb-16 reveal">
   <div class="glass overflow-hidden">
     <div
       class="photo-block opacity-80"
-      style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/v1772051898/freepik__-__10075_gcfi7k.png');">
+      style="background-image:url('https://res.cloudinary.com/dc2n4hmij/image/upload/f_auto,q_auto,w_1600/v1772054522/freepik__-7-__10074_coyah5.png');">
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="container-fix pb-20">
+<section class="container-fix pb-20 reveal">
   <div class="text-xs text-white/60 font-semibold tracking-wide">FAQ</div>
   <div class="mt-2 text-2xl font-black">Частые вопросы</div>
 
@@ -412,7 +470,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/10">
+<footer class="border-t border-white/10 reveal">
   <div class="container-fix py-10 text-sm text-white/55">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <div>© 2026 LUXAR AUTORENT • Бишкек</div>
@@ -558,6 +616,24 @@
       setTimeout(closeModal, 400);
     }
   });
+
+  /* ✅ Минималистичное появление секций */
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || els.length === 0){
+      els.forEach(el => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  })();
 </script>
 
 </body>
