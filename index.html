@@ -509,17 +509,28 @@
   attachPhoneMask(document.getElementById('phone2'));
   attachPhoneMask(document.getElementById('modalPhone'));
 
+  // ✅ FIX: отправляем как text/plain, чтобы не было CORS preflight и не зависало на "Отправляем…"
   async function sendLead(payload){
     payload.page_url = location.href;
     payload.created_at = new Date().toISOString();
     if (!SUBMIT_ENDPOINT) return true;
 
-    const res = await fetch(SUBMIT_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify(payload)
-    });
-    return res.ok;
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), 12000);
+
+    try{
+      const res = await fetch(SUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      clearTimeout(t);
+      return res.ok;
+    }catch(err){
+      clearTimeout(t);
+      return false;
+    }
   }
 
   // Form 1
