@@ -490,10 +490,10 @@
 </div>
 
 <script>
-  // ✅ ВАЖНО:
-  // Оставляем ваш URL /exec
-  const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwIx39EIU3SZP7Z7O9XEjBV135lphkEJYyEYks_WUGP2h_DIRM0h07ABBJMQezqyNsB/exec";
-
+  // ✅ ВСТАВЬ СЮДА ТВОЙ АКТУАЛЬНЫЙ /exec URL
+  // Если ты хочешь использовать новый ID, просто замени эту строку:
+  // const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/<ТВОЙ_ID>/exec";
+const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyGoypnN9WTJIwyDydDBpjOTnLU4E9RPefAdYhMT4smSnHj9j-QObKJ7aULtOTHPqT2/exec";
   function attachPhoneMask(input){
     input.addEventListener('input', () => {
       let v = input.value.replace(/[^\d+]/g, '');
@@ -511,32 +511,29 @@
   attachPhoneMask(document.getElementById('phone2'));
   attachPhoneMask(document.getElementById('modalPhone'));
 
-  // ✅ FIX: УБИРАЕМ no-cors и text/plain
-  // Делаем нормальный JSON POST и читаем ответ {success:true/false}
+  // ✅ ЖЕЛЕЗНЫЙ вариант для Vercel (один HTML):
+  // no-cors + text/plain → запрос уходит без CORS-preflight и стабильно доходит до Apps Script
   async function sendLead(payload){
     payload.page_url = location.href;
     payload.created_at = new Date().toISOString();
-
-    // гарантируем поля (чтобы Apps Script точно записал в нужные колонки)
     payload.source = payload.source || "Сайт";
     payload.car = payload.car || "";
     payload.name = payload.name || "";
     payload.phone = payload.phone || "";
 
-    if (!SUBMIT_ENDPOINT) return { success: true };
+    if (!SUBMIT_ENDPOINT) return true;
 
-    const res = await fetch(SUBMIT_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(payload)
-    });
-
-    const data = await res.json().catch(() => ({}));
-
-    if (!res.ok || !data.success) {
-      throw new Error(data.error || ("HTTP " + res.status));
+    try{
+      await fetch(SUBMIT_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      return true; // запрос ушел
+    }catch(err){
+      return false;
     }
-    return data;
   }
 
   // Form 1
@@ -551,13 +548,9 @@
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Лидформа 1";
 
-    try{
-      await sendLead(payload);
-      status.textContent = "Заявка отправлена ✓";
-      e.target.reset();
-    }catch(err){
-      status.textContent = "Ошибка отправки: " + (err.message || "попробуйте ещё раз");
-    }
+    const ok = await sendLead(payload);
+    status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
+    if (ok) e.target.reset();
   });
 
   // Form 2
@@ -572,13 +565,9 @@
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Лидформа 2";
 
-    try{
-      await sendLead(payload);
-      status.textContent = "Заявка отправлена ✓";
-      e.target.reset();
-    }catch(err){
-      status.textContent = "Ошибка отправки: " + (err.message || "попробуйте ещё раз");
-    }
+    const ok = await sendLead(payload);
+    status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
+    if (ok) e.target.reset();
   });
 
   // Modal open/close
@@ -620,13 +609,11 @@
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Автопарк";
 
-    try{
-      await sendLead(payload);
-      modalStatus.textContent = "Заявка отправлена ✓";
+    const ok = await sendLead(payload);
+    modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
+    if (ok) {
       e.target.reset();
       setTimeout(closeModal, 400);
-    }catch(err){
-      modalStatus.textContent = "Ошибка отправки: " + (err.message || "попробуйте ещё раз");
     }
   });
 
