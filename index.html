@@ -490,10 +490,8 @@
 </div>
 
 <script>
-  // ✅ ВСТАВЬ СЮДА ТВОЙ АКТУАЛЬНЫЙ /exec URL
-  // Если ты хочешь использовать новый ID, просто замени эту строку:
-  // const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/<ТВОЙ_ID>/exec";
-const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyGoypnN9WTJIwyDydDBpjOTnLU4E9RPefAdYhMT4smSnHj9j-QObKJ7aULtOTHPqT2/exec";
+  const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyGoypnN9WTJIwyDydDBpjOTnLU4E9RPefAdYhMT4smSnHj9j-QObKJ7aULtOTHPqT2/exec";
+
   function attachPhoneMask(input){
     input.addEventListener('input', () => {
       let v = input.value.replace(/[^\d+]/g, '');
@@ -511,11 +509,8 @@ const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyGoypnN9WTJIwy
   attachPhoneMask(document.getElementById('phone2'));
   attachPhoneMask(document.getElementById('modalPhone'));
 
-  // ✅ ЖЕЛЕЗНЫЙ вариант для Vercel (один HTML):
-  // no-cors + text/plain → запрос уходит без CORS-preflight и стабильно доходит до Apps Script
+  // отправка (как у тебя): no-cors + text/plain
   async function sendLead(payload){
-    payload.page_url = location.href;
-    payload.created_at = new Date().toISOString();
     payload.source = payload.source || "Сайт";
     payload.car = payload.car || "";
     payload.name = payload.name || "";
@@ -530,44 +525,66 @@ const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyGoypnN9WTJIwy
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
-      return true; // запрос ушел
+      return true;
     }catch(err){
       return false;
     }
   }
 
-  // Form 1
+  // Form 1 — быстрый UI
   document.getElementById('leadForm1').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const form = e.target;
     const status = document.getElementById('status1');
+    const btn = form.querySelector('button[type="submit"]');
+
     const phone = document.getElementById('phone1').value;
     if (!isPhoneValid(phone)) { status.textContent = "Проверьте номер телефона"; return; }
 
-    status.textContent = "Отправляем…";
-    const fd = new FormData(e.target);
+    btn.disabled = true;
+    const oldText = btn.textContent;
+    btn.textContent = "Отправляем…";
+    status.textContent = "";
+
+    const fd = new FormData(form);
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Лидформа 1";
 
     const ok = await sendLead(payload);
+
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
-    if (ok) e.target.reset();
+    if (ok) form.reset();
+
+    btn.disabled = false;
+    btn.textContent = oldText;
   });
 
-  // Form 2
+  // Form 2 — быстрый UI
   document.getElementById('leadForm2').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const form = e.target;
     const status = document.getElementById('status2');
+    const btn = form.querySelector('button[type="submit"]');
+
     const phone = document.getElementById('phone2').value;
     if (!isPhoneValid(phone)) { status.textContent = "Проверьте номер телефона"; return; }
 
-    status.textContent = "Отправляем…";
-    const fd = new FormData(e.target);
+    btn.disabled = true;
+    const oldText = btn.textContent;
+    btn.textContent = "Отправляем…";
+    status.textContent = "";
+
+    const fd = new FormData(form);
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Лидформа 2";
 
     const ok = await sendLead(payload);
+
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
-    if (ok) e.target.reset();
+    if (ok) form.reset();
+
+    btn.disabled = false;
+    btn.textContent = oldText;
   });
 
   // Modal open/close
@@ -598,23 +615,34 @@ const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyGoypnN9WTJIwy
     btn.addEventListener('click', () => openModal(btn.dataset.car || "Автопарк"));
   });
 
-  // Modal submit
+  // Modal submit — быстрый UI
   document.getElementById('modalForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+
     const phone = document.getElementById('modalPhone').value;
     if (!isPhoneValid(phone)) { modalStatus.textContent = "Проверьте номер телефона"; return; }
 
-    modalStatus.textContent = "Отправляем…";
-    const fd = new FormData(e.target);
+    btn.disabled = true;
+    const oldText = btn.textContent;
+    btn.textContent = "Отправляем…";
+    modalStatus.textContent = "";
+
+    const fd = new FormData(form);
     const payload = Object.fromEntries(fd.entries());
     payload.source = "Автопарк";
 
     const ok = await sendLead(payload);
+
     modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) {
-      e.target.reset();
+      form.reset();
       setTimeout(closeModal, 400);
     }
+
+    btn.disabled = false;
+    btn.textContent = oldText;
   });
 
   // Reveal
