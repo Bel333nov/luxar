@@ -706,35 +706,42 @@ document.querySelectorAll('.js-open-modal').forEach(btn => {
 });
 
   // Modal submit — быстрый UI
-  document.getElementById('modalForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
+ document.getElementById('modalForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
 
-    const phone = document.getElementById('modalPhone').value;
-    if (!isPhoneValid(phone)) { modalStatus.textContent = "Проверьте номер телефона"; return; }
+  const phone = document.getElementById('modalPhone').value;
+  if (!isPhoneValid(phone)) { 
+    modalStatus.textContent = "Проверьте номер телефона"; 
+    return; 
+  }
 
-    btn.disabled = true;
-    const oldText = btn.textContent;
-    btn.textContent = "Отправляем…";
-    modalStatus.textContent = "";
+  btn.disabled = true;
+  const oldText = btn.textContent;
+  btn.textContent = "Отправляем…";
+  modalStatus.textContent = "";
 
-    const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
-    payload.source = "Автопарк";
+  const fd = new FormData(form);
+  const payload = Object.fromEntries(fd.entries());
+  payload.source = "Автопарк";
 
-    const ok = await sendLead(payload);
-if (ok && typeof fbq !== 'undefined') {
-  fbq('track', 'Lead');
-    modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
-    if (ok) {
-      form.reset();
-      setTimeout(closeModal, 400);
-    }
+  const ok = await sendLead(payload);
 
-    btn.disabled = false;
-    btn.textContent = oldText;
-  });
+  if (ok && typeof fbq !== 'undefined') {
+    fbq('track', 'Lead');
+  }
+
+  modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
+
+  if (ok) {
+    form.reset();
+    setTimeout(closeModal, 400);
+  }
+
+  btn.disabled = false;
+  btn.textContent = oldText;
+});
 
   // Reveal
   (function(){
