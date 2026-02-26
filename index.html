@@ -629,7 +629,9 @@
     payload.source = "Лидформа 1";
 
     const ok = await sendLead(payload);
-
+if (ok && typeof fbq !== 'undefined') {
+  fbq('track', 'Lead');
+}
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) form.reset();
 
@@ -658,6 +660,9 @@
 
     const ok = await sendLead(payload);
 
+if (ok && typeof fbq !== 'undefined') {
+  fbq('track', 'Lead');
+}
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) form.reset();
 
@@ -689,9 +694,16 @@
   modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-  document.querySelectorAll('.js-open-modal').forEach(btn => {
-    btn.addEventListener('click', () => openModal(btn.dataset.car || "Автопарк"));
+document.querySelectorAll('.js-open-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'AddToCart');
+    }
+
+    openModal(btn.dataset.car || "Автопарк");
   });
+});
 
   // Modal submit — быстрый UI
   document.getElementById('modalForm').addEventListener('submit', async (e) => {
@@ -712,7 +724,8 @@
     payload.source = "Автопарк";
 
     const ok = await sendLead(payload);
-
+if (ok && typeof fbq !== 'undefined') {
+  fbq('track', 'Lead');
     modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) {
       form.reset();
