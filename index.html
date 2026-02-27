@@ -250,6 +250,14 @@
           class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
         <button class="btn w-full" type="submit">Заказать звонок</button>
         <div id="status1" class="text-xs text-white/60"></div>
+
+        <!-- ✅ Политика конфиденциальности (под лидформой) -->
+        <div class="text-[11px] leading-relaxed text-white/50">
+          Нажимая кнопку, вы соглашаетесь с
+          <a href="#privacy" class="underline underline-offset-4 text-white/70 hover:text-white">
+            политикой конфиденциальности
+          </a>.
+        </div>
       </form>
     </div>
   </div>
@@ -363,6 +371,14 @@
 
       <button class="btn w-full" type="submit">Отправить заявку</button>
       <div id="status2" class="text-xs text-white/60"></div>
+
+      <!-- ✅ Политика конфиденциальности (под лидформой) -->
+      <div class="text-[11px] leading-relaxed text-white/50">
+        Нажимая кнопку, вы соглашаетесь с
+        <a href="#privacy" class="underline underline-offset-4 text-white/70 hover:text-white">
+          политикой конфиденциальности
+        </a>.
+      </div>
     </form>
   </div>
 </section>
@@ -563,6 +579,14 @@
         class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
       <button class="btn w-full" type="submit">Получить звонок</button>
       <div id="modalStatus" class="text-xs text-white/60"></div>
+
+      <!-- ✅ Политика конфиденциальности (под лидформой) -->
+      <div class="text-[11px] leading-relaxed text-white/50">
+        Нажимая кнопку, вы соглашаетесь с
+        <a href="#privacy" class="underline underline-offset-4 text-white/70 hover:text-white">
+          политикой конфиденциальности
+        </a>.
+      </div>
     </form>
   </div>
 </div>
@@ -586,6 +610,60 @@
       <path d="M26.67 15.76c0 5.99-4.89 10.85-10.92 10.85-1.92 0-3.73-.49-5.3-1.36L5.33 26.67l1.46-4.85a10.75 10.75 0 0 1-1.38-5.23C5.41 10.6 10.3 5.74 16.33 5.74c6.03 0 10.34 4.03 10.34 10.02Z" stroke="white" stroke-opacity=".9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
+</div>
+
+<!-- ✅ Privacy Policy Modal -->
+<div id="privacyModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal-card p-6">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <div class="text-xs text-white/60 font-semibold tracking-wide">ДОКУМЕНТ</div>
+        <div class="mt-2 text-2xl font-black">Политика конфиденциальности</div>
+        <div class="mt-2 text-sm text-white/60">Как мы обрабатываем ваши данные</div>
+      </div>
+      <button id="privacyClose" class="modal-x" type="button" aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="mt-5 text-sm text-white/70 leading-relaxed space-y-3" id="privacy">
+      <p>
+        Настоящая политика конфиденциальности описывает, какие данные мы получаем через формы на сайте и как мы их используем.
+      </p>
+
+      <p class="font-semibold text-white/85">1) Какие данные мы собираем</p>
+      <p>
+        Имя, номер телефона и (при необходимости) выбранный автомобиль — только те данные, которые вы вводите в формы на сайте.
+      </p>
+
+      <p class="font-semibold text-white/85">2) Зачем мы собираем данные</p>
+      <p>
+        Чтобы связаться с вами, уточнить детали аренды, подтвердить наличие авто и условия.
+      </p>
+
+      <p class="font-semibold text-white/85">3) Как мы храним и кому передаём</p>
+      <p>
+        Данные используются только сотрудниками LUXAR AUTORENT для обработки заявки.
+        Мы не продаём и не передаём ваши данные третьим лицам, кроме случаев, предусмотренных законом.
+      </p>
+
+      <p class="font-semibold text-white/85">4) Срок хранения</p>
+      <p>
+        Данные хранятся столько, сколько нужно для обработки заявки и коммуникации по ней, либо до вашего запроса на удаление.
+      </p>
+
+      <p class="font-semibold text-white/85">5) Ваши права</p>
+      <p>
+        Вы можете запросить изменение или удаление ваших данных, написав нам в WhatsApp или позвонив по номеру, указанному на сайте.
+      </p>
+
+      <p class="text-xs text-white/45">
+        Обновлено: 2026
+      </p>
+    </div>
+
+    <div class="mt-6 flex justify-end">
+      <button id="privacyOk" class="btn-ghost text-sm" type="button">Понятно</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -763,6 +841,37 @@ document.querySelectorAll('.js-open-modal').forEach(btn => {
   btn.disabled = false;
   btn.textContent = oldText;
 });
+
+  // ✅ Privacy modal open/close (по клику на ссылку)
+  const privacyModal = document.getElementById('privacyModal');
+  const privacyClose = document.getElementById('privacyClose');
+  const privacyOk = document.getElementById('privacyOk');
+
+  function openPrivacy(){
+    privacyModal.classList.add('open');
+    privacyModal.setAttribute('aria-hidden','false');
+  }
+  function closePrivacy(){
+    privacyModal.classList.remove('open');
+    privacyModal.setAttribute('aria-hidden','true');
+  }
+
+  // перехватываем все ссылки на #privacy
+  document.querySelectorAll('a[href="#privacy"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      openPrivacy();
+    });
+  });
+
+  privacyClose.addEventListener('click', closePrivacy);
+  privacyOk.addEventListener('click', closePrivacy);
+  privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closePrivacy(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape'){
+      if (privacyModal.classList.contains('open')) closePrivacy();
+    }
+  });
 
   // Reveal
   (function(){
