@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
 <link rel="dns-prefetch" href="https://res.cloudinary.com">
 
+<!-- Meta Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -31,6 +32,8 @@
   <img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=902865135723871&ev=PageView&noscript=1"/>
 </noscript>
+<!-- End Meta Pixel Code -->
+
 <style>
   body{
     font-family: Manrope, sans-serif;
@@ -233,7 +236,7 @@
       <div class="flex justify-between items-start">
         <div>
           <div class="text-xl font-black">Получить быстрый обратный звонок</div>
-          <div class="text-[10px] text-white/60 mt-1 whitespace-nowrap">Нажимая кнопку, вы соглашаетесь с <span class="underline">политикой конфиденциальности</span>.</div>
+          <div class="text-sm text-white/60 mt-1">Перезвоним и уточним детали аренды</div>
         </div>
         <div class="text-xs text-white/60 text-right">
           Ответим<br><span class="font-semibold text-white">10–20 мин</span>
@@ -247,6 +250,14 @@
           class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
         <button class="btn w-full" type="submit">Заказать звонок</button>
         <div id="status1" class="text-xs text-white/60"></div>
+
+        <!-- ✅ Политика конфиденциальности (под лидформой) -->
+        <div class="text-[11px] leading-relaxed text-white/50">
+          Нажимая кнопку, вы соглашаетесь с
+          <a href="#privacy" class="underline underline-offset-4 text-white/70 hover:text-white">
+            политикой конфиденциальности
+          </a>.
+        </div>
       </form>
     </div>
   </div>
@@ -324,8 +335,8 @@
       <div>
         <div class="text-xs text-white/60 font-semibold tracking-wide">ЗАЯВКА</div>
         <div class="mt-2 text-2xl font-black">Подобрать автомобиль</div>
-        <div class="mt-2 text-[10px] text-white/60 whitespace-nowrap">
-          Нажимая кнопку, вы соглашаетесь с <span class="underline">политикой конфиденциальности</span>.
+        <div class="mt-2 text-sm text-white/60">
+          Выберите машину — мы перезвоним и подтвердим наличие.
         </div>
       </div>
       <div class="text-xs text-white/60 text-right">
@@ -360,6 +371,14 @@
 
       <button class="btn w-full" type="submit">Отправить заявку</button>
       <div id="status2" class="text-xs text-white/60"></div>
+
+      <!-- ✅ Политика конфиденциальности (под лидформой) -->
+      <div class="text-[11px] leading-relaxed text-white/50">
+        Нажимая кнопку, вы соглашаетесь с
+        <a href="#privacy" class="underline underline-offset-4 text-white/70 hover:text-white">
+          политикой конфиденциальности
+        </a>.
+      </div>
     </form>
   </div>
 </section>
@@ -547,7 +566,7 @@
       <div>
         <div class="text-xs text-white/60 font-semibold tracking-wide">ЗАЯВКА</div>
         <div class="mt-2 text-2xl font-black">Получить звонок</div>
-        <div id="modalCarText" class="mt-2 text-[10px] text-white/60 whitespace-nowrap"></div>
+        <div id="modalCarText" class="mt-2 text-sm text-white/60"></div>
       </div>
       <button id="modalClose" class="modal-x" type="button" aria-label="Закрыть">✕</button>
     </div>
@@ -560,12 +579,22 @@
         class="w-full bg-white/10 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-white/30" />
       <button class="btn w-full" type="submit">Получить звонок</button>
       <div id="modalStatus" class="text-xs text-white/60"></div>
+
+      <!-- ✅ Политика конфиденциальности (под лидформой) -->
+      <div class="text-[11px] leading-relaxed text-white/50">
+        Нажимая кнопку, вы соглашаетесь с
+        <a href="#privacy" class="underline underline-offset-4 text-white/70 hover:text-white">
+          политикой конфиденциальности
+        </a>.
+      </div>
     </form>
   </div>
 </div>
 
+<!-- ✅ Fixed action buttons: Call + WhatsApp -->
 <div class="fab-wrap" aria-label="Контакты">
   <a class="fab fab--call" href="tel:0999211000" aria-label="Позвонить 0999211000" title="Позвонить">
+    <!-- phone icon -->
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z" stroke="white" stroke-opacity=".9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -575,11 +604,66 @@
      href="https://wa.me/996999211000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D1%8F%20%D1%81%20%D1%81%D0%B0%D0й%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%D1%81%D1%87%D0%B5%D1%82%20%D0%B0%D0%B2%D1%82%D0%BE"
      target="_blank" rel="noopener"
      aria-label="Написать в WhatsApp" title="WhatsApp">
+    <!-- whatsapp icon -->
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
       <path d="M19.11 17.53c-.23-.12-1.33-.66-1.54-.74-.2-.08-.35-.12-.5.12-.15.23-.58.74-.71.89-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.15-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.36.1-.48.1-.1.23-.26.35-.39.12-.13.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.5-1.2-.69-1.65-.18-.43-.37-.37-.5-.37h-.43c-.15 0-.39.06-.59.29-.2.23-.78.76-.78 1.85s.8 2.14.91 2.29c.12.15 1.58 2.42 3.82 3.39.53.23.95.37 1.27.47.54.17 1.03.15 1.42.09.43-.06 1.33-.54 1.52-1.06.18-.52.18-.97.13-1.06-.05-.09-.2-.15-.43-.27Z" fill="white" fill-opacity=".9"/>
       <path d="M26.67 15.76c0 5.99-4.89 10.85-10.92 10.85-1.92 0-3.73-.49-5.3-1.36L5.33 26.67l1.46-4.85a10.75 10.75 0 0 1-1.38-5.23C5.41 10.6 10.3 5.74 16.33 5.74c6.03 0 10.34 4.03 10.34 10.02Z" stroke="white" stroke-opacity=".9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
+</div>
+
+<!-- ✅ Privacy Policy Modal -->
+<div id="privacyModal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal-card p-6">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <div class="text-xs text-white/60 font-semibold tracking-wide">ДОКУМЕНТ</div>
+        <div class="mt-2 text-2xl font-black">Политика конфиденциальности</div>
+        <div class="mt-2 text-sm text-white/60">Как мы обрабатываем ваши данные</div>
+      </div>
+      <button id="privacyClose" class="modal-x" type="button" aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="mt-5 text-sm text-white/70 leading-relaxed space-y-3" id="privacy">
+      <p>
+        Настоящая политика конфиденциальности описывает, какие данные мы получаем через формы на сайте и как мы их используем.
+      </p>
+
+      <p class="font-semibold text-white/85">1) Какие данные мы собираем</p>
+      <p>
+        Имя, номер телефона и (при необходимости) выбранный автомобиль — только те данные, которые вы вводите в формы на сайте.
+      </p>
+
+      <p class="font-semibold text-white/85">2) Зачем мы собираем данные</p>
+      <p>
+        Чтобы связаться с вами, уточнить детали аренды, подтвердить наличие авто и условия.
+      </p>
+
+      <p class="font-semibold text-white/85">3) Как мы храним и кому передаём</p>
+      <p>
+        Данные используются только сотрудниками LUXAR AUTORENT для обработки заявки.
+        Мы не продаём и не передаём ваши данные третьим лицам, кроме случаев, предусмотренных законом.
+      </p>
+
+      <p class="font-semibold text-white/85">4) Срок хранения</p>
+      <p>
+        Данные хранятся столько, сколько нужно для обработки заявки и коммуникации по ней, либо до вашего запроса на удаление.
+      </p>
+
+      <p class="font-semibold text-white/85">5) Ваши права</p>
+      <p>
+        Вы можете запросить изменение или удаление ваших данных, написав нам в WhatsApp или позвонив по номеру, указанному на сайте.
+      </p>
+
+      <p class="text-xs text-white/45">
+        Обновлено: 2026
+      </p>
+    </div>
+
+    <div class="mt-6 flex justify-end">
+      <button id="privacyOk" class="btn-ghost text-sm" type="button">Понятно</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -602,6 +686,7 @@
   attachPhoneMask(document.getElementById('phone2'));
   attachPhoneMask(document.getElementById('modalPhone'));
 
+  // отправка (как у тебя): no-cors + text/plain
   async function sendLead(payload){
     payload.source = payload.source || "Сайт";
     payload.car = payload.car || "";
@@ -623,6 +708,7 @@
     }
   }
 
+  // Form 1 — быстрый UI
   document.getElementById('leadForm1').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -642,9 +728,9 @@
     payload.source = "Лидформа 1";
 
     const ok = await sendLead(payload);
-    if (ok && typeof fbq !== 'undefined') {
-      fbq('track', 'Lead');
-    }
+if (ok && typeof fbq !== 'undefined') {
+  fbq('track', 'Lead');
+}
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) form.reset();
 
@@ -652,6 +738,7 @@
     btn.textContent = oldText;
   });
 
+  // Form 2 — быстрый UI
   document.getElementById('leadForm2').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -672,9 +759,9 @@
 
     const ok = await sendLead(payload);
 
-    if (ok && typeof fbq !== 'undefined') {
-      fbq('track', 'Lead');
-    }
+if (ok && typeof fbq !== 'undefined') {
+  fbq('track', 'Lead');
+}
     status.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
     if (ok) form.reset();
 
@@ -682,6 +769,7 @@
     btn.textContent = oldText;
   });
 
+  // Modal open/close
   const modalBackdrop = document.getElementById('modalBackdrop');
   const modalClose = document.getElementById('modalClose');
   const modalCar = document.getElementById('modalCar');
@@ -691,9 +779,7 @@
   function openModal(carLabel){
     modalStatus.textContent = "";
     modalCar.value = carLabel || "";
-    modalCarText.innerHTML = carLabel 
-      ? ("Вы выбрали: " + carLabel) 
-      : "Нажимая кнопку, вы соглашаетесь с <span class='underline'>политикой конфиденциальности</span>.";
+    modalCarText.textContent = carLabel ? ("Вы выбрали: " + carLabel) : "Оставьте контакты — мы перезвоним.";
     modalBackdrop.classList.add('open');
     modalBackdrop.setAttribute('aria-hidden','false');
     setTimeout(() => document.getElementById('modalPhone').focus(), 50);
@@ -707,52 +793,87 @@
   modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-  document.querySelectorAll('.js-open-modal').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'AddToCart');
-      }
-      openModal(btn.dataset.car || "Автопарк");
+document.querySelectorAll('.js-open-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'AddToCart');
+    }
+
+    openModal(btn.dataset.car || "Автопарк");
+  });
+});
+
+  // Modal submit — быстрый UI
+ document.getElementById('modalForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+
+  const phone = document.getElementById('modalPhone').value;
+  if (!isPhoneValid(phone)) { 
+    modalStatus.textContent = "Проверьте номер телефона"; 
+    return; 
+  }
+
+  btn.disabled = true;
+  const oldText = btn.textContent;
+  btn.textContent = "Отправляем…";
+  modalStatus.textContent = "";
+
+  const fd = new FormData(form);
+  const payload = Object.fromEntries(fd.entries());
+  payload.source = "Автопарк";
+
+  const ok = await sendLead(payload);
+
+  if (ok && typeof fbq !== 'undefined') {
+    fbq('track', 'Lead');
+  }
+
+  modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
+
+  if (ok) {
+    form.reset();
+    setTimeout(closeModal, 400);
+  }
+
+  btn.disabled = false;
+  btn.textContent = oldText;
+});
+
+  // ✅ Privacy modal open/close (по клику на ссылку)
+  const privacyModal = document.getElementById('privacyModal');
+  const privacyClose = document.getElementById('privacyClose');
+  const privacyOk = document.getElementById('privacyOk');
+
+  function openPrivacy(){
+    privacyModal.classList.add('open');
+    privacyModal.setAttribute('aria-hidden','false');
+  }
+  function closePrivacy(){
+    privacyModal.classList.remove('open');
+    privacyModal.setAttribute('aria-hidden','true');
+  }
+
+  // перехватываем все ссылки на #privacy
+  document.querySelectorAll('a[href="#privacy"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      openPrivacy();
     });
   });
 
-  document.getElementById('modalForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
-
-    const phone = document.getElementById('modalPhone').value;
-    if (!isPhoneValid(phone)) { 
-      modalStatus.textContent = "Проверьте номер телефона"; 
-      return; 
+  privacyClose.addEventListener('click', closePrivacy);
+  privacyOk.addEventListener('click', closePrivacy);
+  privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closePrivacy(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape'){
+      if (privacyModal.classList.contains('open')) closePrivacy();
     }
-
-    btn.disabled = true;
-    const oldText = btn.textContent;
-    btn.textContent = "Отправляем…";
-    modalStatus.textContent = "";
-
-    const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
-    payload.source = "Автопарк";
-
-    const ok = await sendLead(payload);
-
-    if (ok && typeof fbq !== 'undefined') {
-      fbq('track', 'Lead');
-    }
-
-    modalStatus.textContent = ok ? "Заявка отправлена ✓" : "Ошибка отправки. Попробуйте ещё раз.";
-
-    if (ok) {
-      form.reset();
-      setTimeout(closeModal, 400);
-    }
-
-    btn.disabled = false;
-    btn.textContent = oldText;
   });
 
+  // Reveal
   (function(){
     const els = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window) || els.length === 0){
@@ -773,3 +894,4 @@
 
 </body>
 </html>
+
